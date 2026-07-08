@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Droplets, Recycle, Shirt, Store } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Droplets,
+  Recycle,
+  Shirt,
+  Store,
+} from "lucide-react";
 import { Container } from "../components/layout/Container";
 import navbarImage from "../assets/images/navbar-image.webp";
 import sliderImg1 from "../assets/images/slider-img-1.webp";
@@ -184,7 +191,9 @@ export function Home() {
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveHeroIndex((current) => (current + 1) % heroCarouselImages.length);
+      setActiveHeroIndex(
+        (current) => (current + 1) % heroCarouselImages.length,
+      );
     }, 3800);
 
     return () => window.clearInterval(interval);
@@ -632,18 +641,23 @@ export function Home() {
                     className="border-b border-[#F8F5F1]/22 py-6 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
                   >
                     <div className="flex items-start gap-4">
-                      <span
-                        className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F8F5F1]/12 text-[#DCC8B6]"
-                      >
-                        <point.icon
-                          className="h-5 w-5"
-                          strokeWidth={1.6}
-                          aria-hidden="true"
-                        />
+                      <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F8F5F1]/12 text-[#DCC8B6]">
+                        {point.icon ? (
+                          <point.icon
+                            className="h-5 w-5"
+                            strokeWidth={1.6}
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <img
+                            src={point.image}
+                            alt=""
+                            className="h-5 w-5 rounded-full object-cover"
+                            aria-hidden="true"
+                          />
+                        )}
                       </span>
-                      <h3
-                        className="text-3xl leading-none font-normal tracking-tight text-[#FDFBF8] md:text-[2.35rem]"
-                      >
+                      <h3 className="text-3xl leading-none font-normal tracking-tight text-[#FDFBF8] md:text-[2.35rem]">
                         {point.number}
                       </h3>
                     </div>
@@ -691,7 +705,7 @@ export function Home() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-end">
               <div>
                 <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#8A776B]">
-                Kom i gang
+                  Kom i gang
                 </p>
                 <h2 className="mt-3 text-3xl leading-tight font-medium tracking-tight text-[#2A2926] md:text-5xl">
                   Sådan gør du
@@ -744,7 +758,11 @@ export function Home() {
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E6DED6] bg-[#F8F5F1] text-[#2A2926] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
                 aria-label="Forrige trin"
               >
-                <ChevronLeft className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+                <ChevronLeft
+                  className="h-5 w-5"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
               </button>
               <button
                 type="button"
@@ -752,7 +770,11 @@ export function Home() {
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E6DED6] bg-[#F8F5F1] text-[#2A2926] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
                 aria-label="Næste trin"
               >
-                <ChevronRight className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+                <ChevronRight
+                  className="h-5 w-5"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
               </button>
             </div>
           </div>

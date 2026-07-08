@@ -1,0 +1,46 @@
+---
+description: Overall project rules and architecture
+alwaysApply: true
+---
+
+# Det Kollektive Klædeskab
+
+## Tech Stack
+
+- React 19
+- Vite
+- Tailwind CSS v4
+- React Router
+- Framer Motion (only when needed)
+- Lucide React
+- No backend
+- No TypeScript
+
+## Project Goals
+
+Build a premium fashion rental website that feels:
+
+- Modern
+- Minimal
+- Scandinavian
+- Editorial
+- Premium
+- Sustainable
+- Elegant
+
+The website should feel like a luxury fashion brand rather than a typical webshop.
+
+## Code Quality
+
+Always prefer:
+
+- Readable code
+- Reusable components
+- Small files
+- Semantic HTML
+- Accessibility
+- Performance
+
+Avoid unnecessary complexity.
+
+Keep everything simple.

@@ -1,0 +1,56 @@
+---
+description: React conventions
+alwaysApply: true
+---
+
+# React Rules
+
+Always use:
+
+- Functional components
+- Hooks
+- Named exports when appropriate
+
+Component rules:
+
+One responsibility per component.
+
+Keep components under roughly 150 lines whenever possible.
+
+Split UI into reusable pieces.
+
+## State
+
+Keep state local whenever possible.
+
+Avoid prop drilling.
+
+## Naming
+
+Use:
+
+PascalCase
+
+Example:
+
+Hero.jsx
+
+MembershipCard.jsx
+
+Navbar.jsx
+
+Footer.jsx
+
+CamelCase for:
+
+Variables
+
+Functions
+
+Hooks
+
+## File Structure
+
+One component per file.
+
+Avoid giant files.

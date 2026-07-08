@@ -1,0 +1,72 @@
+---
+description: Component architecture
+alwaysApply: true
+---
+
+# Component Structure
+
+Organize components into:
+
+components/
+
+layout/
+
+sections/
+
+ui/
+
+## UI Components
+
+Should contain:
+
+Buttons
+
+Inputs
+
+Cards
+
+Badges
+
+Chips
+
+Icons
+
+Reusable UI only.
+
+## Sections
+
+Large page sections.
+
+Example:
+
+Hero
+
+About
+
+Membership
+
+Testimonials
+
+FAQ
+
+Contact
+
+Footer
+
+## Layout
+
+Navbar
+
+Footer
+
+Container
+
+Wrapper
+
+Navigation
+
+## Rules
+
+Never duplicate components.
+
+Reuse existing components whenever possible.

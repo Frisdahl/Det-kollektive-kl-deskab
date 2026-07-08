@@ -1,0 +1,58 @@
+---
+description: Tailwind CSS rules
+alwaysApply: true
+---
+
+# Tailwind CSS
+
+Use Tailwind utilities.
+
+Avoid inline styles.
+
+Avoid custom CSS unless necessary.
+
+Prefer utility classes.
+
+## Layout
+
+Use:
+
+max-w-7xl
+
+mx-auto
+
+px-6
+
+md:px-10
+
+lg:px-16
+
+## Spacing
+
+Prefer:
+
+gap
+
+flex
+
+grid
+
+instead of margins.
+
+## Responsive
+
+Always build mobile first.
+
+Then:
+
+md
+
+lg
+
+xl
+
+## Colors
+
+Use Tailwind theme variables.
+
+Avoid hardcoded colors unless part of the design system.

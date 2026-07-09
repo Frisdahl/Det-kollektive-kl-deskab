@@ -69,7 +69,7 @@ export function Navbar() {
               as={NavLink}
               to="/medlemskab"
               onClick={closeMenu}
-              className="hidden px-5 py-2.5 text-xs md:inline-flex"
+              className="hidden px-5 py-2.5 text-xs lg:text-base md:inline-flex"
             >
               Meld dig ind
             </Button>
@@ -77,7 +77,7 @@ export function Navbar() {
             <Button
               as="button"
               variant="ghost"
-              className="hidden cursor-pointer px-4 py-2.5 text-xs hover:bg-transparent hover:text-[#CFAFA7] sm:inline-flex"
+              className="hidden cursor-pointer px-4 py-2.5 text-xs lg:text-base hover:bg-transparent hover:text-[#CFAFA7] sm:inline-flex"
             >
               Log ind
             </Button>

@@ -442,11 +442,11 @@ export function Home() {
             <p className="mb-5 text-xs font-medium tracking-[0.18em] uppercase text-[#F8F5F1]/70">
               Fælles garderobe i København
             </p>
-            <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] font-normal tracking-tight">
+            <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] font-normal tracking-tight lg:text-[clamp(3.1rem,5.2vw,5rem)]">
               <span className="block">Flere outfits.</span>
               <span className="block">Mindre forbrug.</span>
             </h1>
-            <p className="mt-6 max-w-md text-base leading-7 text-[#F8F5F1]/78 md:text-lg md:leading-8">
+            <p className="mt-6 max-w-md text-base leading-7 text-[#F8F5F1]/78 md:text-base md:leading-8 lg:text-lg">
               Lån, byt og del tøj i et lokalt fællesskab med mere stil og mindre
               spild.
             </p>
@@ -625,8 +625,8 @@ export function Home() {
 
       <section className="pb-20 md:pb-28">
         <Container>
-          <div className="overflow-hidden rounded-2xl bg-[#8A776B] text-[#FDFBF8] md:rounded-[1.5rem] lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:items-center lg:gap-10">
-            <div className="px-6 py-10 md:px-10 md:py-12 lg:py-16 lg:pr-0 lg:pl-12">
+          <div className="overflow-hidden rounded-2xl bg-[#8A776B] text-[#FDFBF8] md:rounded-[1.5rem] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-6">
+            <div className="px-6 py-10 md:px-10 md:py-12 lg:py-10 lg:pr-0 lg:pl-12">
               <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#F8F5F1]/70">
                 Fællesskabet i tal
               </p>
@@ -634,11 +634,11 @@ export function Home() {
                 Det har vi skabt sammen
               </h2>
 
-              <div className="mt-10 grid border-t border-[#F8F5F1]/22 sm:grid-cols-2">
+              <div className="mt-6 grid border-t border-[#F8F5F1]/22 sm:grid-cols-2">
                 {salesPoints.map((point) => (
                   <article
                     key={point.number}
-                    className="border-b border-[#F8F5F1]/22 py-6 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
+                    className="border-b border-[#F8F5F1]/22 py-4 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
                   >
                     <div className="flex items-start gap-4">
                       <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F8F5F1]/12 text-[#DCC8B6]">
@@ -661,7 +661,7 @@ export function Home() {
                         {point.number}
                       </h3>
                     </div>
-                    <p className="mt-4 max-w-xs text-sm leading-6 text-[#F8F5F1]/78 md:text-base md:leading-7">
+                    <p className="mt-4 max-w-xs text-base leading-6 text-[#F8F5F1]/78 md:leading-7">
                       {point.text}
                     </p>
                   </article>
@@ -669,7 +669,7 @@ export function Home() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center px-6 pb-10 md:pb-12 lg:px-0 lg:py-12 lg:pr-10">
+            <div className="relative flex items-center justify-center px-6 pb-10 md:pb-12 lg:px-0 lg:py-10 lg:pr-20">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute right-0 bottom-8 h-40 w-40 translate-x-1/4 overflow-hidden rounded-full opacity-20 lg:h-60 lg:w-60"
@@ -681,7 +681,7 @@ export function Home() {
                 />
               </div>
 
-              <div className="relative mx-auto w-full max-w-[24rem] overflow-hidden rounded-2xl bg-[#2A2926] shadow-[0_28px_80px_rgba(42,41,38,0.26)] lg:-mr-2">
+              <div className="relative mx-auto w-full max-w-[28rem] overflow-hidden rounded-2xl bg-[#2A2926] shadow-[0_28px_80px_rgba(42,41,38,0.26)]">
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#2A2926]">
                   <video
                     src={guideVideo}
@@ -743,7 +743,7 @@ export function Home() {
                     <h3 className="font-['Manrope'] text-lg leading-tight font-semibold tracking-normal text-[#2A2926]">
                       {step.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-[#6F655F]">
+                    <p className="mt-3 text-base leading-7 text-[#6F655F]">
                       {step.text}
                     </p>
                   </div>
@@ -803,7 +803,7 @@ export function Home() {
                     <h3 className="font-['Manrope'] text-base leading-none font-bold tracking-normal text-[#2A2926] md:text-lg">
                       {membershipPackage.name}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-6 text-[#2A2926] md:text-base md:leading-7">
+                    <p className="mt-3 flex-1 text-base leading-7 text-[#2A2926]">
                       {membershipPackage.text}
                     </p>
                     <p className="mt-4 text-lg font-semibold text-[#2A2926] md:text-xl">

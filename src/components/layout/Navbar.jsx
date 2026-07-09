@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ShoppingBag } from "lucide-react";
 import navbarImage from "../../assets/images/navbar-image.webp";
@@ -9,7 +9,7 @@ const menuLinks = [
   { label: "Sådan gør du", to: "/#saadan-goer-du" },
   { label: "Om os", to: "/om-os" },
   { label: "Butikker", to: "/#butikker" },
-  { label: "Gavekort", to: "/#gavekort" },
+  { label: "Gavekort", to: "/gavekort" },
 ];
 
 export function Navbar() {
@@ -47,12 +47,12 @@ export function Navbar() {
   return (
     <div
       className={[
-        "sticky top-0 z-50 bg-[#F8F5F1] text-[#2A2926] transition-shadow duration-300",
+        "sticky top-0 z-50 bg-[#f9f4f1] text-[#2A2926] transition-shadow duration-300",
         isScrolled ? "shadow-[0_4px_20px_rgba(42,41,38,0.08)]" : "",
       ].join(" ")}
     >
-      <header className="relative z-50 bg-[#F8F5F1]">
-        <Container className="flex min-h-24 items-center justify-between gap-4 bg-[#F8F5F1] md:gap-8">
+      <header className="relative z-50 bg-[#f9f4f1]">
+        <Container className="flex min-h-24 items-center justify-between gap-4 bg-[#f9f4f1] md:gap-8">
           <Link
             to="/"
             onClick={closeMenu}
@@ -75,15 +75,16 @@ export function Navbar() {
               as={NavLink}
               to="/medlemskab"
               onClick={closeMenu}
-              className="hidden px-5 py-2.5 text-xs lg:text-base md:inline-flex"
+              className="hidden px-5 py-2.5 !text-xs md:inline-flex"
             >
               Meld dig ind
             </Button>
 
             <Button
-              as="button"
+              as="a"
+              href="https://app.detkollektiveklaedeskab.dk/login"
               variant="ghost"
-              className="hidden cursor-pointer px-4 py-2.5 text-xs lg:text-base hover:bg-transparent hover:text-[#CFAFA7] sm:inline-flex"
+              className="hidden cursor-pointer px-4 py-2.5 !text-xs hover:bg-transparent hover:text-[#CFAFA7] sm:inline-flex"
             >
               Log ind
             </Button>
@@ -110,10 +111,8 @@ export function Navbar() {
               <span className="relative h-4 w-6" aria-hidden="true">
                 <span
                   className={[
-                    "absolute left-0 top-0 h-[2px] w-6 origin-left bg-current transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    isMenuOpen
-                      ? "[transform:rotate(30.256deg)_scaleX(1.158)]"
-                      : "[transform:rotate(0deg)_scaleX(1)]",
+                    "absolute left-0 top-0 h-[2px] w-6 origin-center bg-current transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    isMenuOpen ? "translate-y-[7px] rotate-45" : "translate-y-0 rotate-0",
                   ].join(" ")}
                 />
                 <span
@@ -124,10 +123,10 @@ export function Navbar() {
                 />
                 <span
                   className={[
-                    "absolute left-0 top-[14px] h-[2px] w-6 origin-left bg-current transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    "absolute left-0 top-[14px] h-[2px] w-6 origin-center bg-current transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
                     isMenuOpen
-                      ? "[transform:rotate(-30.256deg)_scaleX(1.158)]"
-                      : "[transform:rotate(0deg)_scaleX(1)]",
+                      ? "-translate-y-[7px] -rotate-45"
+                      : "translate-y-0 rotate-0",
                   ].join(" ")}
                 />
               </span>
@@ -161,7 +160,7 @@ export function Navbar() {
                   isMenuOpen ? "" : "pointer-events-none",
                 ].join(" ")}
               >
-                <div className="m-4 flex flex-row items-center gap-4 rounded-[1.25rem] bg-[#F8F5F1] p-4">
+                <div className="m-4 flex flex-row items-center gap-4 rounded-[1.25rem] bg-[#f9f4f1] p-4">
                   <div className="flex min-h-24 w-28 shrink-0 items-center justify-center overflow-hidden rounded-[1rem] bg-[#DCC8B6] sm:w-36">
                     <img
                       src={navbarImage}
@@ -183,7 +182,7 @@ export function Navbar() {
 
                     <Button
                       as={Link}
-                      to="/#gavekort"
+                      to="/gavekort"
                       onClick={closeMenu}
                       className="cursor-pointer px-5 py-2.5 text-xs !lowercase tracking-normal"
                     >
@@ -202,7 +201,7 @@ export function Navbar() {
                         <NavLink
                           to={item.to}
                           onClick={closeMenu}
-                          className="block w-full cursor-pointer py-4 text-base leading-none font-normal tracking-tight text-[#2A2926] uppercase transition-colors hover:bg-[#F8F5F1]"
+                          className="block w-full cursor-pointer py-4 text-base leading-none font-normal tracking-tight text-[#2A2926] uppercase transition-colors hover:bg-[#f9f4f1]"
                         >
                           {item.label}
                         </NavLink>

@@ -19,7 +19,7 @@
   }
 
   :root {
-    --color-background: #f8f5f1;
+    --color-background: #f9f4f1;
     --color-surface: #fdfbf8;
     --color-text-primary: #2a2926;
     --color-text-secondary: #6f655f;
@@ -57,7 +57,7 @@
   }
 
   .fluid-kicker {
-    font-size: clamp(0.8rem, 0.55vw + 0.7rem, 1rem);
+    font-size: clamp(0.72rem, 0.22vw + 0.68rem, 0.82rem);
     line-height: 1.1;
     letter-spacing: 0.14em;
   }

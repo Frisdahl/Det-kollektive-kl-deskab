@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
   Droplets,
+  Heart,
   Recycle,
-  Shirt,
   Store,
 } from "lucide-react";
 import { Container } from "../components/layout/Container";
@@ -101,7 +101,7 @@ const trustpilotReviews = [
 const salesPoints = [
   {
     colorClass: "text-[#8A776B]",
-    image: rydOpImage,
+    icon: Heart,
     number: "1.284",
     text: "Stykker tøj har fået nyt liv gennem vores fællesskab.",
   },
@@ -127,7 +127,7 @@ const salesPoints = [
 
 const howItWorksSteps = [
   {
-    icon: Shirt,
+    image: rydOpImage,
     title: "Ryd op i dit klædeskab",
     text: "Find det tøj frem, du ikke længere bruger, men som andre kan få glæde af.",
   },
@@ -158,22 +158,58 @@ const membershipPackages = [
     name: "Alm. medlem",
     text: "Første måned 99 kr.",
     price: "199 kr. pr. måned",
+    tone: "bg-[#f9f4f1]",
   },
   {
     name: "Studie medlem",
     text: "Første måned gratis",
     price: "149 kr. pr. måned",
+    tone: "bg-[#f9f4f1]",
   },
   {
     name: "Familie medlem",
     text: "Mor (eller far) og barn mellem 16-20 år. Første måned 149 kr.",
     price: "299 kr. pr. måned",
+    tone: "bg-[#f9f4f1]",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Hvordan fungerer medlemskabet?",
+    answer:
+      "Du vælger et medlemskab, får adgang til garderoben og kan bruge dine point på nye fund i vores butikker.",
+  },
+  {
+    question: "Kan jeg aflevere mit eget tøj?",
+    answer:
+      "Ja, du kan aflevere tøj, du ikke længere bruger. Vi vurderer det og giver dig point, som du kan bruge i fællesskabets garderobe.",
+  },
+  {
+    question: "Kan jeg skifte medlemskab senere?",
+    answer:
+      "Ja, du kan justere dit medlemskab, hvis din garderobe eller hverdag ændrer sig.",
+  },
+  {
+    question: "Hvor kan jeg bruge mit medlemskab?",
+    answer:
+      "Dit medlemskab kan bruges i alle vores butikker, så du kan finde nyt tøj der, hvor det passer dig bedst.",
+  },
+  {
+    question: "Hvor mange stykker tøj kan jeg bytte ad gangen?",
+    answer:
+      "Som medlem kan du som udgangspunkt bytte op til 10 stykker tøj ad gangen, så garderoben hele tiden kan cirkulere videre.",
   },
 ];
 
 export function Home() {
   const carouselRef = useRef(null);
   const howItWorksRef = useRef(null);
+  const howItWorksDrag = useRef({
+    isDragging: false,
+    scrollLeft: 0,
+    startX: 0,
+  });
   const dragState = useRef({
     animationFrame: null,
     current: 0,
@@ -186,6 +222,7 @@ export function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [activeCarouselIndex, setActiveCarouselIndex] = useState(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [visibleReviews, setVisibleReviews] = useState(2);
   const allReviewsVisible = visibleReviews >= trustpilotReviews.length;
 
@@ -434,19 +471,56 @@ export function Home() {
     });
   };
 
+  const handleHowItWorksPointerDown = (event) => {
+    const slider = howItWorksRef.current;
+
+    if (!slider || event.button !== 0) {
+      return;
+    }
+
+    howItWorksDrag.current = {
+      isDragging: true,
+      scrollLeft: slider.scrollLeft,
+      startX: event.clientX,
+    };
+    slider.setPointerCapture(event.pointerId);
+  };
+
+  const handleHowItWorksPointerMove = (event) => {
+    const slider = howItWorksRef.current;
+
+    if (!slider || !howItWorksDrag.current.isDragging) {
+      return;
+    }
+
+    event.preventDefault();
+    const dragDistance = event.clientX - howItWorksDrag.current.startX;
+    slider.scrollLeft = howItWorksDrag.current.scrollLeft - dragDistance;
+  };
+
+  const stopHowItWorksDrag = (event) => {
+    const slider = howItWorksRef.current;
+
+    howItWorksDrag.current.isDragging = false;
+
+    if (slider?.hasPointerCapture(event.pointerId)) {
+      slider.releasePointerCapture(event.pointerId);
+    }
+  };
+
   return (
     <main className="w-full">
-      <section className="bg-[#8A776B] pb-20 text-[#FDFBF8] md:pb-24">
+      <section className="bg-[#8A776B] pb-16 text-[#FDFBF8] md:pb-20">
         <Container className="grid min-h-[28rem] items-center gap-10 py-8 md:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] md:py-10 lg:min-h-[31rem] lg:gap-16">
           <div className="flex min-h-[22rem] max-w-xl flex-col justify-center py-6 md:min-h-[25rem]">
-            <p className="fluid-kicker mb-5 font-medium uppercase text-[#F8F5F1]/70">
+            <p className="fluid-kicker mb-5 font-medium uppercase text-[#f9f4f1]/70">
               Fælles garderobe i København
             </p>
             <h1 className="text-[clamp(2.6rem,5.4vw,4.6rem)] leading-[0.92] font-normal tracking-tight lg:text-[clamp(3rem,5vw,5rem)]">
               <span className="block">Flere outfits.</span>
               <span className="block">Mindre forbrug.</span>
             </h1>
-            <p className="mt-6 max-w-md text-[clamp(1rem,0.7vw+0.8rem,1.2rem)] leading-7 text-[#F8F5F1]/78 md:leading-8">
+            <p className="mt-6 max-w-md text-[clamp(1rem,0.7vw+0.8rem,1.2rem)] leading-7 text-[#f9f4f1]/78 md:leading-8">
               Lån, byt og del tøj i et lokalt fællesskab med mere stil og mindre
               spild.
             </p>
@@ -469,7 +543,7 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="pt-20 pb-16 md:pt-28 md:pb-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
             <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
@@ -478,6 +552,8 @@ export function Home() {
             <h2 className="fluid-title-md mt-3 flex items-center justify-center gap-4 font-medium tracking-tight text-[#2A2926] md:gap-6">
               <a
                 href="https://www.facebook.com/detkollektiveklaedeskab"
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Følg os på Facebook"
                 className="inline-flex cursor-pointer transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CFAFA7]"
               >
@@ -491,6 +567,8 @@ export function Home() {
               <span>følg os på</span>
               <a
                 href="https://www.instagram.com/detkollektiveklaedeskab/"
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Følg os på Instagram"
                 className="inline-flex cursor-pointer transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CFAFA7]"
               >
@@ -546,7 +624,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="pb-20 md:pb-28">
+      <section className="pb-16 md:pb-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
             <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
@@ -623,25 +701,25 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section id="butikker" className="bg-[#8A776B] pt-16 pb-8 text-[#FDFBF8] md:pt-20 md:pb-10">
         <Container>
-          <div className="overflow-hidden rounded-2xl bg-[#8A776B] text-[#FDFBF8] md:rounded-[1.5rem] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-6">
-            <div className="px-6 py-10 md:px-10 md:py-12 lg:py-14 lg:pr-0 lg:pl-12">
-              <p className="fluid-kicker font-medium uppercase text-[#F8F5F1]/70">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
+            <div className="py-8 md:py-10 lg:py-12 lg:pr-0">
+              <p className="fluid-kicker font-medium uppercase text-[#f9f4f1]/70">
                 Fællesskabet i tal
               </p>
               <h2 className="fluid-title-lg mt-3 max-w-lg font-medium tracking-tight">
                 Det har vi skabt sammen
               </h2>
 
-              <div className="mt-8 grid border-t border-[#F8F5F1]/22 sm:grid-cols-2">
+              <div className="mt-8 grid border-t border-[#f9f4f1]/22 sm:grid-cols-2">
                 {salesPoints.map((point) => (
                   <article
                     key={point.number}
-                    className="border-b border-[#F8F5F1]/22 py-5 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
+                    className="border-b border-[#f9f4f1]/22 py-5 sm:odd:pr-6 sm:even:border-l sm:even:border-[#f9f4f1]/22 sm:even:pl-6"
                   >
                     <div className="flex items-start gap-4">
-                      <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F8F5F1]/12 text-[#DCC8B6]">
+                      <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f9f4f1]/12 text-[#DCC8B6]">
                         {point.icon ? (
                           <point.icon
                             className="h-5 w-5"
@@ -661,7 +739,7 @@ export function Home() {
                         {point.number}
                       </h3>
                     </div>
-                    <p className="mt-4 max-w-xs text-base leading-6 text-[#F8F5F1]/78 md:leading-7">
+                    <p className="mt-4 max-w-xs text-base leading-6 text-[#f9f4f1]/78 md:leading-7">
                       {point.text}
                     </p>
                   </article>
@@ -669,7 +747,7 @@ export function Home() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center px-6 pb-10 md:pb-12 lg:px-0 lg:py-14 lg:pr-20">
+            <div className="relative flex items-center justify-center pb-8 md:pb-10 lg:px-0 lg:py-12 lg:pr-12">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute right-0 bottom-8 h-40 w-40 translate-x-1/4 overflow-hidden rounded-full opacity-20 lg:h-60 lg:w-60"
@@ -699,19 +777,19 @@ export function Home() {
         </Container>
       </section>
 
-      <section id="saadan-goer-du" className="py-24 md:py-32">
+      <section id="saadan-goer-du" className="scroll-mt-32 bg-[#8A776B] pt-10 pb-24 text-[#FDFBF8] md:scroll-mt-40 md:pt-12 md:pb-32">
         <Container>
-          <div className="rounded-2xl bg-[#FDFBF8] px-6 py-12 shadow-[0_18px_60px_rgba(42,41,38,0.06)] md:rounded-[1.5rem] md:px-10 md:py-14 lg:px-12 lg:py-16">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-end">
-              <div>
-                <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+          <div>
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-end">
+              <div className="max-w-xl">
+                <p className="fluid-kicker font-medium uppercase text-[#f9f4f1]/70">
                   Kom i gang
                 </p>
-                <h2 className="fluid-title-lg mt-3 font-medium tracking-tight text-[#2A2926]">
+                <h2 className="fluid-title-lg mt-3 font-medium tracking-tight">
                   Sådan gør du
                 </h2>
               </div>
-              <p className="max-w-2xl text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+              <p className="max-w-2xl text-base leading-7 text-[#f9f4f1]/78 md:text-lg md:leading-8 lg:justify-self-end">
                 Et medlemskab giver dig adgang til garderoben, hvor du kan låne,
                 bruge og bytte tøj i dit eget tempo.
               </p>
@@ -719,31 +797,41 @@ export function Home() {
 
             <div
               ref={howItWorksRef}
-              className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4"
+              onDragStart={(event) => event.preventDefault()}
+              onPointerCancel={stopHowItWorksDrag}
+              onPointerDown={handleHowItWorksPointerDown}
+              onPointerMove={handleHowItWorksPointerMove}
+              onPointerUp={stopHowItWorksDrag}
+              className="no-scrollbar mt-10 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-2 pb-10 scroll-pl-2 select-none active:cursor-grabbing md:gap-6 md:px-0 md:pb-12 md:scroll-pl-0"
               aria-label="Sådan gør du trin"
             >
               {howItWorksSteps.map((step, index) => (
                 <article
                   key={step.title}
-                  className="group relative min-h-[28rem] w-[82vw] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#E6DED6] bg-[#F8F5F1] transition-colors hover:bg-[#DCC8B6] sm:w-[28rem] lg:w-[calc((100%_-_2rem)/3)]"
+                  className="group relative min-h-[29rem] w-[82vw] shrink-0 snap-start overflow-hidden rounded-[1.35rem] bg-[#f9f4f1] text-[#2A2926] sm:w-[28rem] lg:w-[calc((100%_-_3rem)/3)]"
                 >
-                  <div className="relative aspect-[16/11] overflow-hidden">
+                  <div className="relative aspect-[16/11] overflow-hidden bg-[#2A2926]">
                     <img
                       src={step.image}
                       alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="h-full w-full object-cover opacity-92 transition-transform duration-700 ease-out group-hover:scale-105"
                       aria-hidden="true"
                     />
-                    <span className="absolute right-4 top-4 font-['filson-pro'] text-[clamp(2.5rem,4vw,4rem)] leading-none text-[#FDFBF8]/72">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-[linear-gradient(to_top,rgba(42,41,38,0.52),rgba(42,41,38,0.08)_58%,rgba(42,41,38,0)_100%)]"
+                    />
+                    <span className="absolute bottom-4 left-4 font-['filson-pro'] text-7xl leading-none text-[#FDFBF8]/22 transition-all duration-500 ease-out group-hover:text-[#FDFBF8]/62 group-hover:translate-y-[-0.15rem]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <div className="p-8">
+                  <div className="p-7 md:p-8">
+                    <div className="mb-5 h-px w-full bg-[#E6DED6]" />
                     <h3 className="font-['Manrope'] text-lg leading-tight font-semibold tracking-normal text-[#2A2926]">
                       {step.title}
                     </h3>
-                    <p className="mt-5 text-base leading-7 text-[#6F655F]">
+                    <p className="mt-4 text-base leading-7 text-[#6F655F]">
                       {step.text}
                     </p>
                   </div>
@@ -751,11 +839,11 @@ export function Home() {
               ))}
             </div>
 
-            <div className="mt-6 flex justify-end gap-2">
+            <div className="flex justify-end gap-2">
               <button
                 type="button"
                 onClick={() => scrollHowItWorks(-1)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E6DED6] bg-[#F8F5F1] text-[#2A2926] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#f9f4f1]/24 bg-[#f9f4f1]/12 text-[#FDFBF8] transition-colors hover:bg-[#f9f4f1]/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FDFBF8]"
                 aria-label="Forrige trin"
               >
                 <ChevronLeft
@@ -767,7 +855,7 @@ export function Home() {
               <button
                 type="button"
                 onClick={() => scrollHowItWorks(1)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E6DED6] bg-[#F8F5F1] text-[#2A2926] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#f9f4f1]/24 bg-[#f9f4f1]/12 text-[#FDFBF8] transition-colors hover:bg-[#f9f4f1]/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FDFBF8]"
                 aria-label="Næste trin"
               >
                 <ChevronRight
@@ -781,34 +869,49 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="pb-20 md:pb-28">
+      <section className="pt-16 pb-16 md:pt-24 md:pb-20">
         <Container>
-          <div className="overflow-hidden rounded-2xl bg-[#DCC8B6] md:rounded-[1.5rem] lg:grid lg:min-h-[28rem] lg:grid-cols-[minmax(0,1fr)_32%]">
-            <div className="px-6 py-12 md:px-10 md:py-14 lg:px-14 lg:py-18">
-              <h2 className="fluid-title-lg font-medium tracking-tight text-[#2A2926]">
-                Vælg dit medlemskab
-              </h2>
-
-              <div className="mt-8 flex h-px w-full">
-                <div className="w-20 bg-[#2A2926] md:w-28" />
-                <div className="flex-1 bg-[#E6DED6]" />
+          <div className="overflow-hidden rounded-2xl bg-[#2A2926] text-[#FDFBF8] shadow-[0_24px_80px_rgba(42,41,38,0.14)] md:rounded-[1.5rem] lg:grid lg:min-h-[32rem] lg:grid-cols-[minmax(0,1fr)_36%]">
+            <div className="px-6 py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
+              <p className="fluid-kicker font-medium uppercase text-[#DCC8B6]">
+                Medlemskab
+              </p>
+              <div className="mt-3 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(16rem,0.55fr)] lg:items-end">
+                <h2 className="fluid-title-lg font-medium tracking-tight">
+                  Vælg dit medlemskab
+                </h2>
+                <p className="text-base leading-7 text-[#f9f4f1]/72 md:text-lg">
+                  Vælg den rytme, der passer til din garderobe, og få adgang
+                  til et lokalt udvalg med mere liv i hvert stykke tøj.
+                </p>
               </div>
 
-              <div className="mt-8 grid gap-8 sm:grid-cols-3 sm:items-stretch sm:gap-6">
-                {membershipPackages.map((membershipPackage) => (
+              <div className="mt-10 grid gap-4 md:grid-cols-3 md:items-stretch">
+                {membershipPackages.map((membershipPackage, index) => (
                   <article
                     key={membershipPackage.name}
-                    className="flex min-w-0 flex-col"
+                    className={[
+                      membershipPackage.tone,
+                      "relative flex min-w-0 flex-col overflow-hidden rounded-2xl p-6 text-[#2A2926] shadow-[0_14px_40px_rgba(42,41,38,0.14)]",
+                      index === 1
+                        ? "border border-[#DCC8B6] bg-[#FDFBF8] md:shadow-[0_26px_70px_rgba(42,41,38,0.26)] before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-[#DCC8B6]"
+                        : "",
+                    ].join(" ")}
                   >
-                    <h3 className="font-['Manrope'] text-base leading-none font-bold tracking-normal text-[#2A2926] md:text-lg">
+                    <h3 className="font-['Manrope'] text-base leading-tight font-bold tracking-normal md:text-lg">
                       {membershipPackage.name}
                     </h3>
-                    <p className="mt-3 flex-1 text-base leading-7 text-[#2A2926]">
+                    <p className="mt-5 flex-1 text-base leading-7 text-[#6F655F]">
                       {membershipPackage.text}
                     </p>
-                    <p className="mt-4 text-lg font-semibold text-[#2A2926] md:text-xl">
+                    <p className="mt-6 text-lg font-semibold text-[#2A2926] md:text-xl">
                       {membershipPackage.price}
                     </p>
+                    {index === 1 ? (
+                      <span className="mt-8 inline-flex w-fit rounded-full border border-[#DCC8B6] bg-[#f9f4f1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#8A776B]">
+                        populær
+                      </span>
+                    ) : null}
                   </article>
                 ))}
               </div>
@@ -818,7 +921,7 @@ export function Home() {
               <img
                 src={membershipImage}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover object-right"
+                className="absolute inset-0 h-full w-full object-cover object-right opacity-90"
                 aria-hidden="true"
               />
               <div
@@ -826,9 +929,85 @@ export function Home() {
                 className="absolute inset-0 z-10"
                 style={{
                   backgroundImage:
-                    "linear-gradient(to right, #DCC8B6 0%, rgba(220, 200, 182, 0) 15%)",
+                    "linear-gradient(to right, #2A2926 0%, rgba(42, 41, 38, 0.82) 10%, rgba(42, 41, 38, 0) 36%)",
                 }}
               />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pb-20 md:pb-28">
+        <Container>
+          <div className="grid gap-10 pt-12 md:pt-16 lg:grid-cols-[minmax(0,0.74fr)_minmax(0,1.26fr)] lg:gap-16">
+            <div className="max-w-xl lg:sticky lg:top-28 lg:self-start">
+              <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+                FAQ
+              </p>
+              <h2 className="fluid-title-lg mt-3 font-medium tracking-tight text-[#2A2926]">
+                Spørgsmål om medlemskab
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+                Her finder du svar på de mest almindelige spørgsmål om point,
+                aflevering og adgang til garderoben.
+              </p>
+            </div>
+
+            <div>
+              {faqItems.map((item, index) => {
+                const isOpen = openFaqIndex === index;
+                const answerId = `home-faq-${index}`;
+
+                return (
+                  <article key={item.question} className="border-b border-[#E6DED6]">
+                    <button
+                      type="button"
+                      aria-controls={answerId}
+                      aria-expanded={isOpen}
+                      onClick={() =>
+                        setOpenFaqIndex((current) =>
+                          current === index ? null : index,
+                        )
+                      }
+                      className="group flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left"
+                    >
+                      <span className="font-['Manrope'] text-lg leading-tight font-semibold tracking-normal text-[#2A2926] md:text-xl">
+                        {item.question}
+                      </span>
+                      <span
+                        className={[
+                          "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#8A776B]/28 transition-colors duration-300",
+                          isOpen
+                            ? "bg-[#8A776B] text-[#FDFBF8]"
+                            : "bg-[#FDFBF8] text-[#8A776B] group-hover:bg-[#f9f4f1]",
+                        ].join(" ")}
+                        aria-hidden="true"
+                      >
+                        <span className="absolute h-0.5 w-4 rounded-full bg-current" />
+                        <span
+                          className={[
+                            "absolute h-0.5 w-4 origin-center rounded-full bg-current transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+                            isOpen ? "rotate-180" : "rotate-90",
+                          ].join(" ")}
+                        />
+                      </span>
+                    </button>
+                    <div
+                      id={answerId}
+                      className={[
+                        "grid transition-[grid-template-rows] duration-300 ease-out",
+                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                      ].join(" ")}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="max-w-2xl pb-6 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </Container>

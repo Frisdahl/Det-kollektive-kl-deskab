@@ -1,5 +1,5 @@
+﻿import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo-svg.svg";
 import applePayIcon from "../../assets/icons/applepay.svg";
 import facebookIcon from "../../assets/icons/facebook-icon.svg";
 import googlePayIcon from "../../assets/icons/googlepay.svg";
@@ -7,13 +7,14 @@ import instagramIcon from "../../assets/icons/instagram-icon.svg";
 import mastercardIcon from "../../assets/icons/mastercard.svg";
 import mobilePayIcon from "../../assets/icons/mobilepay.svg";
 import visaIcon from "../../assets/icons/visa.svg";
+import logo from "../../assets/images/logo-svg.svg";
 import { Container } from "./Container";
 
 const navigationLinks = [
   { label: "Sådan gør du", to: "/#saadan-goer-du" },
   { label: "Om os", to: "/om-os" },
   { label: "Butikker", to: "/#butikker" },
-  { label: "Gavekort", to: "/#gavekort" },
+  { label: "Gavekort", to: "/gavekort" },
   { label: "Medlemskab", to: "/medlemskab" },
 ];
 
@@ -30,7 +31,7 @@ function AppStoreButton() {
     <a
       href="#download-app"
       aria-label="Download vores medlemsapp i App Store"
-      className="inline-flex h-11 w-fit items-center gap-2 rounded-[0.45rem] bg-[#2A2926] px-3.5 text-[#FDFBF8] transition-colors hover:bg-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
+      className="inline-flex h-12 w-fit items-center gap-2 rounded-[0.65rem] bg-[#FDFBF8] px-4 text-[#2A2926] transition-colors hover:bg-[#FFE7CE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DCC8B6]"
     >
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
         <path
@@ -50,14 +51,11 @@ function AppStoreButton() {
 
 function PaymentIcon({ icon, label }) {
   return (
-    <li
-      aria-label={label}
-      className="flex h-12 min-w-24 items-center justify-center"
-    >
+    <li aria-label={label} className="flex h-10 min-w-20 items-center justify-center">
       <img
         src={icon}
         alt=""
-        className="max-h-12 max-w-36 object-contain"
+        className="max-h-10 max-w-28 object-contain"
         aria-hidden="true"
       />
     </li>
@@ -86,121 +84,120 @@ export function Footer() {
   ];
 
   return (
-    <>
-      <div className="mt-auto pt-8 md:pt-16" aria-hidden="true" />
-      <footer className="relative bg-[#DCC8B6] text-[#2A2926]">
-        <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
+    <footer className="mt-12 bg-[#2A2926] text-[#FDFBF8] md:mt-14">
+      <Container className="pb-12 pt-0 md:pb-16">
+        <div className="flex flex-col items-center border-b border-[#f9f4f1]/16 pb-10 text-center">
           <Link
             to="/"
             aria-label="Det Kollektive Klædeskab"
-            className="pointer-events-auto relative flex -translate-y-1/2 items-center justify-center"
+            className="-mt-14 inline-flex h-28 w-28 items-center justify-center rounded-full bg-[#f9f4f1] p-2 transition-transform duration-300 hover:scale-105 md:-mt-16 md:h-32 md:w-32"
           >
-            <span
-              aria-hidden="true"
-              className="absolute h-16 w-16 rounded-full bg-[#F8F5F1] md:h-[170px] md:w-[170px]"
-            />
             <img
               src={logo}
-              alt="Det Kollektive Klædeskab"
-              className="relative h-20 w-20 shrink-0 object-contain md:h-[150px] md:w-[150px]"
+              alt=""
+              className="h-full w-full object-contain"
+              aria-hidden="true"
             />
           </Link>
+          <p className="fluid-kicker mt-8 font-medium uppercase text-[#DCC8B6]">
+            følg os på sociale medier
+          </p>
+          <ul className="mt-5 flex items-center justify-center gap-3" aria-label="Sociale medier">
+            {socialLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  className="group flex h-16 w-16 items-center justify-center rounded-full text-[#FDFBF8] transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DCC8B6]"
+                >
+                  <img
+                    src={item.icon}
+                    alt=""
+                    className="h-9 w-9 object-contain transition-transform duration-300 ease-out group-hover:scale-110"
+                    aria-hidden="true"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <h2 className="fluid-title-md mt-6 max-w-2xl font-medium tracking-tight">
+            Mere fællesskab, flere garderober, mindre forbrug.
+          </h2>
         </div>
 
-        <Container className="pt-20 pb-12 md:pt-32 md:pb-16">
-          <section className="flex flex-col items-center gap-4 text-center">
-            <h2 className="fluid-title-md font-['Manrope'] font-semibold tracking-[0.12em] text-[#2A2926]">
-              Følg os på sociale medier
-            </h2>
-            <ul
-              className="flex items-center justify-center gap-3"
-              aria-label="Sociale medier"
-            >
-              {socialLinks.map((item) => (
+        <div className="grid gap-5 py-10 md:grid-cols-2 lg:grid-cols-3">
+          <section className="p-6">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+              navigation
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {navigationLinks.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    aria-label={item.label}
-                    className="group flex h-16 w-16 items-center justify-center rounded-full border-0 bg-transparent text-[#2A2926] transition-colors hover:bg-transparent hover:text-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-2 text-base text-[#FDFBF8] transition-colors hover:text-[#FFE7CE]"
                   >
-                    <img
-                      src={item.icon}
-                      alt=""
-                      className="h-10 w-10 object-contain transition-transform duration-300 ease-out group-hover:scale-110"
+                    {item.label}
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                      strokeWidth={1.8}
                       aria-hidden="true"
                     />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </section>
 
-          <div className="mt-10 grid gap-9 border-y border-[#E6DED6] py-9 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-            <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
-              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-                Navigation
-              </h3>
-              <ul className="mt-6 space-y-2.5">
-                {navigationLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      to={item.to}
-                      className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
-              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-                Information
-              </h3>
-              <ul className="mt-6 space-y-2.5">
-                {informationLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      to={item.to}
-                      className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="sm:col-span-2 lg:col-span-1">
-              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-                Download vores medlemsapp
-              </h3>
-              <div className="mt-6">
-                <AppStoreButton />
-              </div>
-            </section>
-          </div>
-
-          <div className="flex flex-col items-center gap-5 pt-12 text-center md:pt-14">
-            <p className="text-sm text-[#6F655F]">
-              © {new Date().getFullYear()} Det Kollektive Klædeskab
-            </p>
-            <ul
-              className="flex flex-wrap items-center justify-center gap-2"
-              aria-label="Betalingsmidler"
-            >
-              {paymentMethods.map((method) => (
-                <PaymentIcon
-                  key={method.label}
-                  label={method.label}
-                  icon={method.icon}
-                />
+          <section className="p-6">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+              information
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {informationLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-2 text-base text-[#FDFBF8] transition-colors hover:text-[#FFE7CE]"
+                  >
+                    {item.label}
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                      strokeWidth={1.8}
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </li>
               ))}
             </ul>
-          </div>
-        </Container>
-      </footer>
-    </>
+          </section>
+
+          <section className="p-6 md:col-span-2 lg:col-span-1">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+              download vores medlemsapp
+            </h3>
+            <p className="mt-5 text-base leading-7 text-[#f9f4f1]/78">
+              Hav dit medlemskab, dine point og garderoben tæt på i hverdagen.
+            </p>
+            <div className="mt-6">
+              <AppStoreButton />
+            </div>
+          </section>
+        </div>
+
+        <div className="flex flex-col gap-6 border-t border-[#f9f4f1]/16 pt-8 lg:flex-row lg:items-center lg:justify-between">
+          <p className="text-sm text-[#f9f4f1]/58">
+            © {new Date().getFullYear()} Det Kollektive Klædeskab
+          </p>
+          <ul className="flex flex-wrap items-center gap-2" aria-label="Betalingsmidler">
+            {paymentMethods.map((method) => (
+              <PaymentIcon key={method.label} label={method.label} icon={method.icon} />
+            ))}
+          </ul>
+        </div>
+      </Container>
+    </footer>
   );
 }

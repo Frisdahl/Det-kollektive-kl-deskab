@@ -59,9 +59,15 @@ export function Navbar() {
             className="flex min-w-0 cursor-pointer flex-col items-start font-['filson-pro'] leading-[0.84] font-normal tracking-tight text-[#8A776B]"
             aria-label="Det Kollektive Klædeskab"
           >
-            <span className="text-base md:text-lg">Det</span>
-            <span className="text-[1.35rem] md:text-[1.6rem]">Kollektive</span>
-            <span className="text-[1.35rem] md:text-[1.6rem]">Klædeskab</span>
+            <span className="text-[clamp(0.95rem,0.85vw+0.6rem,1.1rem)]">
+              Det
+            </span>
+            <span className="text-[clamp(1.2rem,1.1vw+0.8rem,1.6rem)]">
+              Kollektive
+            </span>
+            <span className="text-[clamp(1.2rem,1.1vw+0.8rem,1.6rem)]">
+              Klædeskab
+            </span>
           </Link>
 
           <div className="flex items-center justify-end gap-2 md:gap-3">

@@ -439,14 +439,14 @@ export function Home() {
       <section className="bg-[#8A776B] pb-20 text-[#FDFBF8] md:pb-24">
         <Container className="grid min-h-[28rem] items-center gap-10 py-8 md:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] md:py-10 lg:min-h-[31rem] lg:gap-16">
           <div className="flex min-h-[22rem] max-w-xl flex-col justify-center py-6 md:min-h-[25rem]">
-            <p className="mb-5 text-xs font-medium tracking-[0.18em] uppercase text-[#F8F5F1]/70">
+            <p className="fluid-kicker mb-5 font-medium uppercase text-[#F8F5F1]/70">
               Fælles garderobe i København
             </p>
-            <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] font-normal tracking-tight lg:text-[clamp(3.1rem,5.2vw,5rem)]">
+            <h1 className="text-[clamp(2.6rem,5.4vw,4.6rem)] leading-[0.92] font-normal tracking-tight lg:text-[clamp(3rem,5vw,5rem)]">
               <span className="block">Flere outfits.</span>
               <span className="block">Mindre forbrug.</span>
             </h1>
-            <p className="mt-6 max-w-md text-base leading-7 text-[#F8F5F1]/78 md:text-base md:leading-8 lg:text-lg">
+            <p className="mt-6 max-w-md text-[clamp(1rem,0.7vw+0.8rem,1.2rem)] leading-7 text-[#F8F5F1]/78 md:leading-8">
               Lån, byt og del tøj i et lokalt fællesskab med mere stil og mindre
               spild.
             </p>
@@ -472,10 +472,10 @@ export function Home() {
       <section className="py-20 md:py-28">
         <Container>
           <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-            <p className="text-sm font-medium tracking-[0.14em] uppercase text-[#8A776B]">
+            <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
               Garderoben
             </p>
-            <h2 className="mt-3 flex items-center justify-center gap-4 text-3xl leading-tight font-medium tracking-tight text-[#2A2926] md:gap-6 md:text-5xl">
+            <h2 className="fluid-title-md mt-3 flex items-center justify-center gap-4 font-medium tracking-tight text-[#2A2926] md:gap-6">
               <a
                 href="https://www.facebook.com/detkollektiveklaedeskab"
                 aria-label="Følg os på Facebook"
@@ -549,10 +549,10 @@ export function Home() {
       <section className="pb-20 md:pb-28">
         <Container>
           <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
-            <p className="text-sm font-medium tracking-[0.14em] uppercase text-[#8A776B]">
+            <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
               Trustpilot
             </p>
-            <h2 className="mt-3 text-3xl leading-tight font-medium tracking-tight text-[#2A2926] md:text-5xl">
+            <h2 className="fluid-title-md mt-3 font-medium tracking-tight text-[#2A2926]">
               Det siger medlemmerne
             </h2>
             <p className="mt-4 text-base leading-7 text-[#6F655F] md:text-lg">
@@ -627,10 +627,10 @@ export function Home() {
         <Container>
           <div className="overflow-hidden rounded-2xl bg-[#8A776B] text-[#FDFBF8] md:rounded-[1.5rem] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-6">
             <div className="px-6 py-10 md:px-10 md:py-12 lg:py-14 lg:pr-0 lg:pl-12">
-              <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#F8F5F1]/70">
+              <p className="fluid-kicker font-medium uppercase text-[#F8F5F1]/70">
                 Fællesskabet i tal
               </p>
-              <h2 className="mt-3 max-w-lg text-3xl leading-tight font-medium tracking-tight md:text-5xl">
+              <h2 className="fluid-title-lg mt-3 max-w-lg font-medium tracking-tight">
                 Det har vi skabt sammen
               </h2>
 
@@ -657,7 +657,7 @@ export function Home() {
                           />
                         )}
                       </span>
-                      <h3 className="text-3xl leading-none font-normal tracking-tight text-[#FDFBF8] md:text-[2.35rem]">
+                      <h3 className="fluid-title-md font-normal tracking-tight text-[#FDFBF8]">
                         {point.number}
                       </h3>
                     </div>
@@ -704,10 +704,10 @@ export function Home() {
           <div className="rounded-2xl bg-[#FDFBF8] px-6 py-12 shadow-[0_18px_60px_rgba(42,41,38,0.06)] md:rounded-[1.5rem] md:px-10 md:py-14 lg:px-12 lg:py-16">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-end">
               <div>
-                <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#8A776B]">
+                <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
                   Kom i gang
                 </p>
-                <h2 className="mt-3 text-3xl leading-tight font-medium tracking-tight text-[#2A2926] md:text-5xl">
+                <h2 className="fluid-title-lg mt-3 font-medium tracking-tight text-[#2A2926]">
                   Sådan gør du
                 </h2>
               </div>
@@ -734,7 +734,7 @@ export function Home() {
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       aria-hidden="true"
                     />
-                    <span className="absolute right-4 top-4 font-['filson-pro'] text-5xl leading-none text-[#FDFBF8]/72">
+                    <span className="absolute right-4 top-4 font-['filson-pro'] text-[clamp(2.5rem,4vw,4rem)] leading-none text-[#FDFBF8]/72">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -785,7 +785,7 @@ export function Home() {
         <Container>
           <div className="overflow-hidden rounded-2xl bg-[#DCC8B6] md:rounded-[1.5rem] lg:grid lg:min-h-[28rem] lg:grid-cols-[minmax(0,1fr)_32%]">
             <div className="px-6 py-12 md:px-10 md:py-14 lg:px-14 lg:py-18">
-              <h2 className="text-3xl leading-tight font-medium tracking-tight text-[#2A2926] md:text-4xl lg:text-5xl">
+              <h2 className="fluid-title-lg font-medium tracking-tight text-[#2A2926]">
                 Vælg dit medlemskab
               </h2>
 

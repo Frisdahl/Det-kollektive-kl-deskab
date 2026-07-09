@@ -89,118 +89,118 @@ export function Footer() {
     <>
       <div className="mt-auto pt-8 md:pt-16" aria-hidden="true" />
       <footer className="relative bg-[#DCC8B6] text-[#2A2926]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
-        <Link
-          to="/"
-          aria-label="Det Kollektive Klædeskab"
-          className="pointer-events-auto relative flex -translate-y-1/2 items-center justify-center"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute h-16 w-16 rounded-full bg-[#F8F5F1] md:h-[170px] md:w-[170px]"
-          />
-          <img
-            src={logo}
-            alt="Det Kollektive Klædeskab"
-            className="relative h-20 w-20 shrink-0 object-contain md:h-[150px] md:w-[150px]"
-          />
-        </Link>
-      </div>
-
-      <Container className="pt-20 pb-12 md:pt-32 md:pb-16">
-        <section className="flex flex-col items-center gap-4 text-center">
-          <h2 className="font-['Manrope'] text-2xl  font-semibold tracking-normal text-[#2A2926] tracking-[0.12em]">
-            Følg os på sociale medier
-          </h2>
-          <ul
-            className="flex items-center justify-center gap-3"
-            aria-label="Sociale medier"
+        <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
+          <Link
+            to="/"
+            aria-label="Det Kollektive Klædeskab"
+            className="pointer-events-auto relative flex -translate-y-1/2 items-center justify-center"
           >
-            {socialLinks.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  aria-label={item.label}
-                  className="group flex h-16 w-16 items-center justify-center rounded-full border-0 bg-transparent text-[#2A2926] transition-colors hover:bg-transparent hover:text-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
-                >
-                  <img
-                    src={item.icon}
-                    alt=""
-                    className="h-10 w-10 object-contain transition-transform duration-300 ease-out group-hover:scale-110"
-                    aria-hidden="true"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+            <span
+              aria-hidden="true"
+              className="absolute h-16 w-16 rounded-full bg-[#F8F5F1] md:h-[170px] md:w-[170px]"
+            />
+            <img
+              src={logo}
+              alt="Det Kollektive Klædeskab"
+              className="relative h-20 w-20 shrink-0 object-contain md:h-[150px] md:w-[150px]"
+            />
+          </Link>
+        </div>
 
-        <div className="mt-10 grid gap-9 border-y border-[#E6DED6] py-9 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-          <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
-            <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-              Navigation
-            </h3>
-            <ul className="mt-6 space-y-2.5">
-              {navigationLinks.map((item) => (
+        <Container className="pt-20 pb-12 md:pt-32 md:pb-16">
+          <section className="flex flex-col items-center gap-4 text-center">
+            <h2 className="fluid-title-md font-['Manrope'] font-semibold tracking-[0.12em] text-[#2A2926]">
+              Følg os på sociale medier
+            </h2>
+            <ul
+              className="flex items-center justify-center gap-3"
+              aria-label="Sociale medier"
+            >
+              {socialLinks.map((item) => (
                 <li key={item.label}>
-                  <Link
-                    to={item.to}
-                    className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
+                  <a
+                    href={item.href}
+                    aria-label={item.label}
+                    className="group flex h-16 w-16 items-center justify-center rounded-full border-0 bg-transparent text-[#2A2926] transition-colors hover:bg-transparent hover:text-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
                   >
-                    {item.label}
-                  </Link>
+                    <img
+                      src={item.icon}
+                      alt=""
+                      className="h-10 w-10 object-contain transition-transform duration-300 ease-out group-hover:scale-110"
+                      aria-hidden="true"
+                    />
+                  </a>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
-            <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-              Information
-            </h3>
-            <ul className="mt-6 space-y-2.5">
-              {informationLinks.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    to={item.to}
-                    className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
+          <div className="mt-10 grid gap-9 border-y border-[#E6DED6] py-9 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
+              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
+                Navigation
+              </h3>
+              <ul className="mt-6 space-y-2.5">
+                {navigationLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      to={item.to}
+                      className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="border-r border-[#E6DED6] pr-6 sm:border-r-0 sm:pr-0 lg:border-r lg:pr-6">
+              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
+                Information
+              </h3>
+              <ul className="mt-6 space-y-2.5">
+                {informationLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      to={item.to}
+                      className="text-base text-[#2A2926] transition-colors hover:text-[#CFAFA7]"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="sm:col-span-2 lg:col-span-1">
+              <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
+                Download vores medlemsapp
+              </h3>
+              <div className="mt-6">
+                <AppStoreButton />
+              </div>
+            </section>
+          </div>
+
+          <div className="flex flex-col items-center gap-5 pt-12 text-center md:pt-14">
+            <p className="text-sm text-[#6F655F]">
+              © {new Date().getFullYear()} Det Kollektive Klædeskab
+            </p>
+            <ul
+              className="flex flex-wrap items-center justify-center gap-2"
+              aria-label="Betalingsmidler"
+            >
+              {paymentMethods.map((method) => (
+                <PaymentIcon
+                  key={method.label}
+                  label={method.label}
+                  icon={method.icon}
+                />
               ))}
             </ul>
-          </section>
-
-          <section className="sm:col-span-2 lg:col-span-1">
-            <h3 className="font-['Manrope'] text-lg leading-none font-bold tracking-normal text-[#2A2926]">
-              Download vores medlemsapp
-            </h3>
-            <div className="mt-6">
-              <AppStoreButton />
-            </div>
-          </section>
-        </div>
-
-        <div className="flex flex-col items-center gap-5 pt-12 text-center md:pt-14">
-          <p className="text-sm text-[#6F655F]">
-            © {new Date().getFullYear()} Det Kollektive Klædeskab
-          </p>
-          <ul
-            className="flex flex-wrap items-center justify-center gap-2"
-            aria-label="Betalingsmidler"
-          >
-            {paymentMethods.map((method) => (
-              <PaymentIcon
-                key={method.label}
-                label={method.label}
-                icon={method.icon}
-              />
-            ))}
-          </ul>
-        </div>
-      </Container>
-    </footer>
+          </div>
+        </Container>
+      </footer>
     </>
   );
 }

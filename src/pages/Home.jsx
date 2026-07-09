@@ -623,10 +623,10 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="pb-20 md:pb-28">
+      <section className="py-24 md:py-32">
         <Container>
           <div className="overflow-hidden rounded-2xl bg-[#8A776B] text-[#FDFBF8] md:rounded-[1.5rem] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-6">
-            <div className="px-6 py-10 md:px-10 md:py-12 lg:py-10 lg:pr-0 lg:pl-12">
+            <div className="px-6 py-10 md:px-10 md:py-12 lg:py-14 lg:pr-0 lg:pl-12">
               <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#F8F5F1]/70">
                 Fællesskabet i tal
               </p>
@@ -634,11 +634,11 @@ export function Home() {
                 Det har vi skabt sammen
               </h2>
 
-              <div className="mt-6 grid border-t border-[#F8F5F1]/22 sm:grid-cols-2">
+              <div className="mt-8 grid border-t border-[#F8F5F1]/22 sm:grid-cols-2">
                 {salesPoints.map((point) => (
                   <article
                     key={point.number}
-                    className="border-b border-[#F8F5F1]/22 py-4 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
+                    className="border-b border-[#F8F5F1]/22 py-5 sm:odd:pr-6 sm:even:border-l sm:even:border-[#F8F5F1]/22 sm:even:pl-6"
                   >
                     <div className="flex items-start gap-4">
                       <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F8F5F1]/12 text-[#DCC8B6]">
@@ -669,7 +669,7 @@ export function Home() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center px-6 pb-10 md:pb-12 lg:px-0 lg:py-10 lg:pr-20">
+            <div className="relative flex items-center justify-center px-6 pb-10 md:pb-12 lg:px-0 lg:py-14 lg:pr-20">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute right-0 bottom-8 h-40 w-40 translate-x-1/4 overflow-hidden rounded-full opacity-20 lg:h-60 lg:w-60"
@@ -699,10 +699,10 @@ export function Home() {
         </Container>
       </section>
 
-      <section id="saadan-goer-du" className="pb-20 md:pb-28">
+      <section id="saadan-goer-du" className="py-24 md:py-32">
         <Container>
-          <div className="rounded-2xl bg-[#FDFBF8] px-6 py-10 shadow-[0_18px_60px_rgba(42,41,38,0.06)] md:rounded-[1.5rem] md:px-10 md:py-12 lg:px-12 lg:py-14">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-end">
+          <div className="rounded-2xl bg-[#FDFBF8] px-6 py-12 shadow-[0_18px_60px_rgba(42,41,38,0.06)] md:rounded-[1.5rem] md:px-10 md:py-14 lg:px-12 lg:py-16">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-end">
               <div>
                 <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#8A776B]">
                   Kom i gang
@@ -719,7 +719,7 @@ export function Home() {
 
             <div
               ref={howItWorksRef}
-              className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+              className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4"
               aria-label="Sådan gør du trin"
             >
               {howItWorksSteps.map((step, index) => (
@@ -739,11 +739,11 @@ export function Home() {
                     </span>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-8">
                     <h3 className="font-['Manrope'] text-lg leading-tight font-semibold tracking-normal text-[#2A2926]">
                       {step.title}
                     </h3>
-                    <p className="mt-3 text-base leading-7 text-[#6F655F]">
+                    <p className="mt-5 text-base leading-7 text-[#6F655F]">
                       {step.text}
                     </p>
                   </div>

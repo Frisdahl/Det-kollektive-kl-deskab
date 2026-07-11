@@ -81,7 +81,7 @@ export function Membership() {
               <p className="fluid-kicker mb-5 font-medium uppercase text-[#8A776B]">
                 Medlemskab
               </p>
-              <h1 className="text-[clamp(2.35rem,4.3vw,3.9rem)] leading-[0.98] font-normal tracking-tight text-[#2A2926]">
+              <h1 className="page-title font-normal text-[#2A2926]">
                 Vælg dit medlemskab
               </h1>
               <div className="mt-6 max-w-md space-y-4 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
@@ -169,7 +169,7 @@ export function Membership() {
               <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
                 Garderoben i praksis
               </p>
-              <h2 className="fluid-title-md mt-3 max-w-xl font-medium tracking-tight">
+              <h2 className="section-title mt-3 max-w-xl font-medium">
                 Find nyt uden at købe nyt
               </h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
@@ -219,7 +219,7 @@ export function Membership() {
                   <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.12em] text-[#8A776B]">
                     Medlemskab
                   </p>
-                  <h2 className="mt-3 font-['Manrope'] text-2xl font-bold tracking-normal">
+                  <h2 className="card-title mt-3 font-['Manrope'] font-bold">
                     {membership.name}
                   </h2>
                   <p className="mt-4 text-sm leading-6 text-[#6F655F]">

@@ -8,8 +8,10 @@ import { Contact } from './pages/Contact'
 import { FAQ } from './pages/FAQ'
 import { GiftCard } from './pages/GiftCard'
 import { Home } from './pages/Home'
+import { HowItWorks } from './pages/HowItWorks'
 import { Cookies, PrivacyPolicy, Terms } from './pages/Legal'
 import { Membership } from './pages/Membership'
+import { Stores } from './pages/Stores'
 
 function ScrollToTop() {
   const { hash, pathname } = useLocation()
@@ -36,7 +38,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/saadan-goer-du" element={<HowItWorks />} />
           <Route path="/om-os" element={<About />} />
+          <Route path="/butikker" element={<Stores />} />
           <Route path="/medlemskab" element={<Membership />} />
           <Route path="/gavekort" element={<GiftCard />} />
           <Route path="/faq" element={<FAQ />} />

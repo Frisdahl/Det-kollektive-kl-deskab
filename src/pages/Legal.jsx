@@ -9,7 +9,7 @@ function LegalPage({ heading, text }) {
             <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
               Information
             </p>
-            <h1 className="fluid-title-lg mt-4 font-medium tracking-tight text-[#2A2926]">
+            <h1 className="page-title mt-4 font-normal text-[#2A2926]">
               {heading}
             </h1>
             <p className="mt-6 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">

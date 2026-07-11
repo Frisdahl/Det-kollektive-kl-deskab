@@ -516,7 +516,7 @@ export function Home() {
             <p className="fluid-kicker mb-5 font-medium uppercase text-[#f9f4f1]/70">
               Fælles garderobe i København
             </p>
-            <h1 className="text-[clamp(2.6rem,5.4vw,4.6rem)] leading-[0.92] font-normal tracking-tight lg:text-[clamp(3rem,5vw,5rem)]">
+            <h1 className="hero-title font-normal">
               <span className="block">Flere outfits.</span>
               <span className="block">Mindre forbrug.</span>
             </h1>
@@ -549,7 +549,7 @@ export function Home() {
             <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
               Garderoben
             </p>
-            <h2 className="fluid-title-md mt-3 flex items-center justify-center gap-4 font-medium tracking-tight text-[#2A2926] md:gap-6">
+            <h2 className="section-title mt-3 flex items-center justify-center gap-4 font-medium text-[#2A2926] md:gap-6">
               <a
                 href="https://www.facebook.com/detkollektiveklaedeskab"
                 target="_blank"
@@ -630,7 +630,7 @@ export function Home() {
             <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
               Trustpilot
             </p>
-            <h2 className="fluid-title-md mt-3 font-medium tracking-tight text-[#2A2926]">
+            <h2 className="section-title mt-3 font-medium text-[#2A2926]">
               Det siger medlemmerne
             </h2>
             <p className="mt-4 text-base leading-7 text-[#6F655F] md:text-lg">
@@ -708,7 +708,7 @@ export function Home() {
               <p className="fluid-kicker font-medium uppercase text-[#f9f4f1]/70">
                 Fællesskabet i tal
               </p>
-              <h2 className="fluid-title-lg mt-3 max-w-lg font-medium tracking-tight">
+              <h2 className="section-title mt-3 max-w-lg font-medium">
                 Det har vi skabt sammen
               </h2>
 
@@ -735,7 +735,7 @@ export function Home() {
                           />
                         )}
                       </span>
-                      <h3 className="fluid-title-md font-normal tracking-tight text-[#FDFBF8]">
+                      <h3 className="stat-title font-normal text-[#FDFBF8]">
                         {point.number}
                       </h3>
                     </div>
@@ -785,7 +785,7 @@ export function Home() {
                 <p className="fluid-kicker font-medium uppercase text-[#f9f4f1]/70">
                   Kom i gang
                 </p>
-                <h2 className="fluid-title-lg mt-3 font-medium tracking-tight">
+                <h2 className="section-title mt-3 font-medium">
                   Sådan gør du
                 </h2>
               </div>
@@ -828,7 +828,7 @@ export function Home() {
 
                   <div className="p-7 md:p-8">
                     <div className="mb-5 h-px w-full bg-[#E6DED6]" />
-                    <h3 className="font-['Manrope'] text-lg leading-tight font-semibold tracking-normal text-[#2A2926]">
+                    <h3 className="card-title font-['Manrope'] font-semibold text-[#2A2926]">
                       {step.title}
                     </h3>
                     <p className="mt-4 text-base leading-7 text-[#6F655F]">
@@ -877,7 +877,7 @@ export function Home() {
                 Medlemskab
               </p>
               <div className="mt-3 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(16rem,0.55fr)] lg:items-end">
-                <h2 className="fluid-title-lg font-medium tracking-tight">
+                <h2 className="section-title font-medium">
                   Vælg dit medlemskab
                 </h2>
                 <p className="text-base leading-7 text-[#f9f4f1]/72 md:text-lg">
@@ -898,7 +898,7 @@ export function Home() {
                         : "",
                     ].join(" ")}
                   >
-                    <h3 className="font-['Manrope'] text-base leading-tight font-bold tracking-normal md:text-lg">
+                    <h3 className="card-title font-['Manrope'] font-bold text-[#2A2926]">
                       {membershipPackage.name}
                     </h3>
                     <p className="mt-5 flex-1 text-base leading-7 text-[#6F655F]">
@@ -944,7 +944,7 @@ export function Home() {
               <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
                 FAQ
               </p>
-              <h2 className="fluid-title-lg mt-3 font-medium tracking-tight text-[#2A2926]">
+              <h2 className="section-title mt-3 font-medium text-[#2A2926]">
                 Spørgsmål om medlemskab
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">

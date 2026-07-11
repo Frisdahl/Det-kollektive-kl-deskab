@@ -11,9 +11,9 @@ import logo from "../../assets/images/logo-svg.svg";
 import { Container } from "./Container";
 
 const navigationLinks = [
-  { label: "Sådan gør du", to: "/#saadan-goer-du" },
+  { label: "Sådan gør du", to: "/saadan-goer-du" },
   { label: "Om os", to: "/om-os" },
-  { label: "Butikker", to: "/#butikker" },
+  { label: "Butikker", to: "/butikker" },
   { label: "Gavekort", to: "/gavekort" },
   { label: "Medlemskab", to: "/medlemskab" },
 ];
@@ -122,7 +122,7 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <h2 className="fluid-title-md mt-6 max-w-2xl font-medium tracking-tight">
+          <h2 className="section-title mt-6 max-w-2xl font-medium">
             Mere fællesskab, flere garderober, mindre forbrug.
           </h2>
         </div>

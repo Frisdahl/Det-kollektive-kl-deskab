@@ -6,10 +6,11 @@ import { Button } from "../ui/Button";
 import { Container } from "./Container";
 
 const menuLinks = [
-  { label: "Sådan gør du", to: "/#saadan-goer-du" },
+  { label: "Sådan gør du", to: "/saadan-goer-du" },
   { label: "Om os", to: "/om-os" },
-  { label: "Butikker", to: "/#butikker" },
+  { label: "Butikker", to: "/butikker" },
   { label: "Gavekort", to: "/gavekort" },
+  { label: "Kontakt", to: "/kontakt" },
 ];
 
 export function Navbar() {
@@ -56,17 +57,17 @@ export function Navbar() {
           <Link
             to="/"
             onClick={closeMenu}
-            className="flex min-w-0 cursor-pointer flex-col items-start font-['filson-pro'] leading-[0.84] font-normal tracking-tight text-[#8A776B]"
+            className="flex min-w-0 cursor-pointer flex-col items-start font-['filson-pro'] leading-[0.84] font-normal tracking-normal text-[#8A776B]"
             aria-label="Det Kollektive Klædeskab"
           >
-            <span className="text-[clamp(0.95rem,0.85vw+0.6rem,1.1rem)]">
-              Det
+            <span className="text-[clamp(0.78rem,0.65vw+0.5rem,0.92rem)]">
+              DET
             </span>
-            <span className="text-[clamp(1.2rem,1.1vw+0.8rem,1.6rem)]">
-              Kollektive
+            <span className="text-[clamp(1rem,0.9vw+0.68rem,1.35rem)]">
+              KOLLEKTIVE
             </span>
-            <span className="text-[clamp(1.2rem,1.1vw+0.8rem,1.6rem)]">
-              Klædeskab
+            <span className="text-[clamp(1rem,0.9vw+0.68rem,1.35rem)]">
+              KLÆDESKAB
             </span>
           </Link>
 

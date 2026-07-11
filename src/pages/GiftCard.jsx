@@ -30,7 +30,7 @@ export function GiftCard() {
               <p className="fluid-kicker mb-5 font-medium uppercase text-[#8A776B]">
                 Gavekort
               </p>
-              <h1 className="text-[clamp(2.35rem,4.3vw,3.9rem)] leading-[0.98] font-normal tracking-tight text-[#2A2926]">
+              <h1 className="page-title font-normal text-[#2A2926]">
                 Vil du give et medlemskab i gave?
               </h1>
               <div className="mt-6 max-w-md space-y-4 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
@@ -98,7 +98,7 @@ export function GiftCard() {
                           <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
                             {String(index + 1).padStart(2, '0')}
                           </p>
-                          <h2 className="mt-2.5 font-['Manrope'] text-sm font-bold tracking-normal">
+                          <h2 className="card-title mt-2.5 font-['Manrope'] font-bold">
                             {option.title}
                           </h2>
                           <p className="mt-3 text-sm leading-6 text-[#4B4642]">

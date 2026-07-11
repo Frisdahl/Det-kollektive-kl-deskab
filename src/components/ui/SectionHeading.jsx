@@ -6,7 +6,7 @@ export function SectionHeading({ as: Component = "h2", label, heading, text }) {
           {label}
         </p>
       ) : null}
-      <Component className="fluid-title-lg font-medium tracking-tight text-[#2A2926]">
+      <Component className="section-title font-medium text-[#2A2926]">
         {heading}
       </Component>
       {text ? (

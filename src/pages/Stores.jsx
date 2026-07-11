@@ -129,7 +129,7 @@ function StoreMarquee({ direction = "normal", images, name }) {
         {repeatedImages.map((image, index) => (
           <div
             key={`${name}-${index}`}
-            className="relative h-56 w-[18rem] shrink-0 overflow-hidden rounded-[1.25rem] bg-[#DCC8B6] md:h-72 md:w-[30rem] xl:h-80 xl:w-[36rem]"
+            className="relative h-56 w-[18rem] shrink-0 overflow-hidden rounded-[1.25rem] bg-divider md:h-72 md:w-[30rem] xl:h-80 xl:w-[36rem]"
           >
             <img
               src={image}
@@ -158,17 +158,17 @@ export function Stores() {
   }, []);
 
   return (
-    <main className="flex-1 bg-[#f9f4f1]">
-      <section className="border-b border-[#E6DED6] py-10 md:py-14">
+    <main className="flex-1 bg-background">
+      <section className="border-b border-border py-10 md:py-14">
         <Container>
           <div className="max-w-4xl">
-            <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+            <p className="fluid-kicker font-medium uppercase text-primary">
               Butikker
             </p>
-            <h1 className="page-title mt-4 font-normal text-[#2A2926]">
+            <h1 className="page-title mt-4 font-normal text-heading">
               Find Det Kollektive Klædeskab i København og Roskilde
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-body md:text-lg md:leading-8">
               Dit medlemskab giver adgang til begge garderober, så du kan bytte
               og finde nye favoritter der, hvor det passer dig bedst.
             </p>
@@ -192,35 +192,35 @@ export function Stores() {
                   className={[
                     "grid gap-8",
                     index > 0
-                      ? "border-t border-[#E6DED6] pt-12 md:pt-16"
+                      ? "border-t border-border pt-12 md:pt-16"
                       : "",
                     "lg:grid-cols-[minmax(17rem,0.42fr)_minmax(0,1fr)] lg:gap-10",
                   ].join(" ")}
                 >
                   <div className="lg:sticky lg:top-28 lg:self-start">
                     <div>
-                      <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+                      <p className="fluid-kicker font-medium uppercase text-primary">
                         {store.city}
                       </p>
-                      <h2 className="section-title mt-3 font-medium text-[#2A2926]">
+                      <h2 className="section-title mt-3 font-medium text-heading">
                         Butikken i {store.city}
                       </h2>
-                      <p className="mt-5 text-base leading-7 text-[#6F655F]">
+                      <p className="mt-5 text-base leading-7 text-body">
                         {store.description}
                       </p>
 
-                      <div className="mt-7 space-y-5 border-t border-[#E6DED6] pt-6">
+                      <div className="mt-7 space-y-5 border-t border-border pt-6">
                         <div className="flex items-start gap-3">
                           <MapPin
-                            className="mt-1 h-5 w-5 shrink-0 text-[#8A776B]"
+                            className="mt-1 h-5 w-5 shrink-0 text-primary"
                             strokeWidth={1.8}
                             aria-hidden="true"
                           />
                           <div>
-                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                               Adresse
                             </p>
-                            <p className="mt-2 text-base leading-7 text-[#2A2926]">
+                            <p className="mt-2 text-base leading-7 text-heading">
                               {store.address}
                             </p>
                           </div>
@@ -228,15 +228,15 @@ export function Stores() {
 
                         <div className="flex items-start gap-3">
                           <Clock
-                            className="mt-1 h-5 w-5 shrink-0 text-[#8A776B]"
+                            className="mt-1 h-5 w-5 shrink-0 text-primary"
                             strokeWidth={1.8}
                             aria-hidden="true"
                           />
                           <div>
-                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                               Åbningstider
                             </p>
-                            <div className="mt-2 space-y-1 text-base leading-7 text-[#2A2926]">
+                            <div className="mt-2 space-y-1 text-base leading-7 text-heading">
                               <p>{openingHours.weekday}</p>
                               <p>{openingHours.saturday}</p>
                             </div>
@@ -245,20 +245,20 @@ export function Stores() {
 
                         <div className="flex items-start gap-3">
                           <Clock
-                            className="mt-1 h-5 w-5 shrink-0 text-[#8A776B]"
+                            className="mt-1 h-5 w-5 shrink-0 text-primary"
                             strokeWidth={1.8}
                             aria-hidden="true"
                           />
                           <div>
-                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                            <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                               Status
                             </p>
                             <p
                               className={[
                                 "mt-2 text-base leading-7 font-semibold",
                                 status.tone === "open"
-                                  ? "text-[#7A8674]"
-                                  : "text-[#6F655F]",
+                                  ? "text-success"
+                                  : "text-body",
                               ].join(" ")}
                             >
                               {status.label}
@@ -267,7 +267,7 @@ export function Stores() {
                         </div>
                       </div>
 
-                      <p className="mt-6 text-sm leading-6 text-[#6F655F]">
+                      <p className="mt-6 text-sm leading-6 text-body">
                         {store.note}
                       </p>
 
@@ -275,7 +275,7 @@ export function Stores() {
                         href={store.mapsUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#CFAFA7] px-5 py-3 text-sm font-semibold text-[#2A2926] transition-colors hover:bg-[#8A776B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
+                        className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-heading transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         Se rute på Google Maps
                         <ArrowUpRight
@@ -288,7 +288,7 @@ export function Stores() {
                   </div>
 
                   <div className="space-y-5 overflow-hidden">
-                    <div className="relative aspect-[16/8] overflow-hidden rounded-[1.25rem] bg-[#DCC8B6]">
+                    <div className="relative aspect-[16/8] overflow-hidden rounded-[1.25rem] bg-divider">
                       <img
                         src={store.images[0]}
                         alt=""
@@ -297,7 +297,7 @@ export function Stores() {
                       />
                     </div>
 
-                    <div className="overflow-hidden rounded-[1.25rem] border border-[#E6DED6] bg-[#FDFBF8]">
+                    <div className="overflow-hidden rounded-[1.25rem] border border-border bg-surface">
                       <iframe
                         title={`Google Maps kort til ${store.city}`}
                         src={mapSrc}

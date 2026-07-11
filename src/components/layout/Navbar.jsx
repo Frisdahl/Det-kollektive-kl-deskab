@@ -48,16 +48,16 @@ export function Navbar() {
   return (
     <div
       className={[
-        "sticky top-0 z-50 bg-[#f9f4f1] text-[#2A2926] transition-shadow duration-300",
-        isScrolled ? "shadow-[0_4px_20px_rgba(42,41,38,0.08)]" : "",
+        "sticky top-0 z-50 bg-background text-heading transition-shadow duration-300",
+        isScrolled ? "shadow-[var(--shadow-soft)]" : "",
       ].join(" ")}
     >
-      <header className="relative z-50 bg-[#f9f4f1]">
-        <Container className="flex min-h-24 items-center justify-between gap-4 bg-[#f9f4f1] md:gap-8">
+      <header className="relative z-50 bg-background">
+        <Container className="flex min-h-24 items-center justify-between gap-4 bg-background md:gap-8">
           <Link
             to="/"
             onClick={closeMenu}
-            className="flex min-w-0 cursor-pointer flex-col items-start font-['filson-pro'] leading-[0.84] font-normal tracking-normal text-[#8A776B]"
+            className="flex min-w-0 cursor-pointer flex-col items-start font-['filson-pro'] leading-[0.84] font-normal tracking-normal text-primary"
             aria-label="Det Kollektive Klædeskab"
           >
             <span className="text-[clamp(0.78rem,0.65vw+0.5rem,0.92rem)]">
@@ -85,14 +85,14 @@ export function Navbar() {
               as="a"
               href="https://app.detkollektiveklaedeskab.dk/login"
               variant="ghost"
-              className="hidden cursor-pointer px-4 py-2.5 !text-xs hover:bg-transparent hover:text-[#CFAFA7] sm:inline-flex"
+              className="hidden cursor-pointer px-4 py-2.5 !text-xs hover:bg-transparent hover:text-accent sm:inline-flex"
             >
               Log ind
             </Button>
 
             <button
               type="button"
-              className="inline-flex h-11 w-11 cursor-pointer items-center justify-center text-[#2A2926] transition-colors hover:text-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
+              className="inline-flex h-11 w-11 cursor-pointer items-center justify-center text-heading transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               aria-label="Kurv"
             >
               <ShoppingBag
@@ -105,7 +105,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={toggleMenu}
-              className="flex h-12 w-14 cursor-pointer flex-col items-center justify-center gap-1 text-[#2A2926] transition-colors hover:text-[#CFAFA7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]"
+              className="flex h-12 w-14 cursor-pointer flex-col items-center justify-center gap-1 text-heading transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               aria-expanded={isMenuOpen}
               aria-controls="site-menu"
             >
@@ -146,7 +146,7 @@ export function Navbar() {
             aria-label="Luk menu"
             onClick={closeMenu}
             className={[
-              "fixed inset-x-0 bottom-0 top-24 z-30 bg-[#2A2926]/35 transition-opacity duration-500 ease-out",
+              "fixed inset-x-0 bottom-0 top-24 z-30 bg-heading/35 transition-opacity duration-500 ease-out",
               isMenuOpen ? "opacity-100" : "opacity-0",
             ].join(" ")}
           />
@@ -157,12 +157,12 @@ export function Navbar() {
                 id="site-menu"
                 data-state={isMenuOpen ? "open" : "closed"}
                 className={[
-                  "site-menu-panel pointer-events-auto w-[min(calc(100vw-2rem),32rem)] rounded-b-[1.5rem] bg-[#FDFBF8] shadow-[0_30px_80px_rgba(42,41,38,0.18)]",
+                  "site-menu-panel pointer-events-auto w-[min(calc(100vw-2rem),32rem)] rounded-b-[1.5rem] bg-surface shadow-[var(--shadow-large)]",
                   isMenuOpen ? "" : "pointer-events-none",
                 ].join(" ")}
               >
-                <div className="m-4 flex flex-row items-center gap-4 rounded-[1.25rem] bg-[#f9f4f1] p-4">
-                  <div className="flex min-h-24 w-28 shrink-0 items-center justify-center overflow-hidden rounded-[1rem] bg-[#DCC8B6] sm:w-36">
+                <div className="m-4 flex flex-row items-center gap-4 rounded-[1.25rem] bg-background p-4">
+                  <div className="flex min-h-24 w-28 shrink-0 items-center justify-center overflow-hidden rounded-[1rem] bg-divider sm:w-36">
                     <img
                       src={navbarImage}
                       alt=""
@@ -173,10 +173,10 @@ export function Navbar() {
 
                   <div className="flex min-w-0 flex-1 flex-col items-start gap-4">
                     <div className="space-y-1">
-                      <h2 className="text-base leading-tight font-semibold tracking-tight text-[#2A2926] underline decoration-[#2A2926]/60 decoration-2 underline-offset-4 sm:text-lg">
+                      <h2 className="text-base leading-tight font-semibold tracking-tight text-heading underline decoration-heading/60 decoration-2 underline-offset-4 sm:text-lg">
                         Giv et medlemskab videre
                       </h2>
-                      <p className="text-sm leading-6 text-[#6F655F]">
+                      <p className="text-sm leading-6 text-body">
                         Gavekort fra 250 kr.
                       </p>
                     </div>
@@ -197,12 +197,12 @@ export function Navbar() {
                     {menuLinks.map((item) => (
                       <li
                         key={item.label}
-                        className="w-full border-t border-[#E6DED6] last:[&_a]:rounded-b-[1.5rem]"
+                        className="w-full border-t border-border last:[&_a]:rounded-b-[1.5rem]"
                       >
                         <NavLink
                           to={item.to}
                           onClick={closeMenu}
-                          className="block w-full cursor-pointer py-4 text-base leading-none font-normal tracking-tight text-[#2A2926] uppercase transition-colors hover:bg-[#f9f4f1]"
+                          className="block w-full cursor-pointer py-4 text-base leading-none font-normal tracking-tight text-heading uppercase transition-colors hover:bg-background"
                         >
                           {item.label}
                         </NavLink>

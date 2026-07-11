@@ -1,6 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-background: #f5f0ec;
+  --color-surface: #f1eeeb;
+  --color-primary: #847165;
+  --color-primary-hover: #735f54;
+  --color-primary-gradient-mid: #8d786c;
+  --color-primary-gradient-end: #978377;
+  --color-accent: #d6b3a2;
+  --color-accent-hover: #c59d8b;
+  --color-heading: #2e2926;
+  --color-body: #5f544d;
+  --color-border: #ded3ca;
+  --color-divider: #d8cdc3;
+  --color-success: #799b7a;
+  --color-error: #b86c6c;
+}
+
 @layer base {
   @font-face {
     font-family: "filson-pro";
@@ -19,20 +36,22 @@
   }
 
   :root {
-    --color-background: #f9f4f1;
-    --color-surface: #fdfbf8;
-    --color-text-primary: #2a2926;
-    --color-text-secondary: #6f655f;
-    --color-border: #e6ded6;
-    --color-sage: #7a8674;
-    --color-dusty-rose: #cfafa7;
-    --color-taupe: #8a776b;
-    --color-warm-sand: #dcc8b6;
+    --shadow-soft: 0 14px 42px
+      color-mix(in srgb, var(--color-heading) 8%, transparent);
+    --shadow-card: 0 18px 55px
+      color-mix(in srgb, var(--color-heading) 7%, transparent);
+    --shadow-large: 0 28px 90px
+      color-mix(in srgb, var(--color-heading) 12%, transparent);
   }
 
   html {
     font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
     font-size: clamp(17px, 0.6vw + 14px, 18px);
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-heading);
   }
 
   h1,
@@ -127,9 +146,118 @@
     mask-image: linear-gradient(
       90deg,
       transparent,
-      #000 8%,
-      #000 92%,
+      black 8%,
+      black 92%,
       transparent
+    );
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-gradient-mid) 55%,
+      var(--color-primary-gradient-end) 100%
+    );
+  }
+
+  .step-card-overlay {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-heading) 52%, transparent),
+      color-mix(in srgb, var(--color-heading) 8%, transparent) 58%,
+      transparent 100%
+    );
+  }
+
+  .media-overlay-soft {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-heading) 28%, transparent),
+      transparent 58%
+    );
+  }
+
+  .media-overlay-medium {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-heading) 42%, transparent),
+      transparent 70%
+    );
+  }
+
+  .media-overlay-strong {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-heading) 74%, transparent),
+      color-mix(in srgb, var(--color-heading) 18%, transparent) 48%,
+      transparent 78%
+    );
+  }
+
+  .media-overlay-subtle {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-heading) 18%, transparent),
+      transparent 58%
+    );
+  }
+
+  .media-fade-text-left {
+    background: linear-gradient(
+      to right,
+      var(--color-heading) 0%,
+      color-mix(in srgb, var(--color-heading) 82%, transparent) 10%,
+      transparent 36%
+    );
+  }
+
+  .pointguide-fade-left {
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-hover) 0%,
+      color-mix(in srgb, var(--color-primary-hover) 90%, transparent) 10%,
+      color-mix(in srgb, var(--color-primary-hover) 46%, transparent) 34%,
+      transparent 68%
+    );
+  }
+
+  .pointguide-image-fade-left {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface) 0%,
+      color-mix(in srgb, var(--color-surface) 92%, transparent) 14%,
+      color-mix(in srgb, var(--color-surface) 52%, transparent) 42%,
+      transparent 76%
+    );
+  }
+
+  .notes-image-fade-right {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--color-background) 18%, transparent) 42%,
+      color-mix(in srgb, var(--color-background) 84%, transparent) 70%,
+      var(--color-background) 100%
+    );
+  }
+
+  .pointguide-fade-bottom {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 54%,
+      var(--color-primary-hover) 100%
+    );
+  }
+
+  .pointguide-fade-image-left {
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-hover) 0%,
+      color-mix(in srgb, var(--color-primary-hover) 86%, transparent) 14%,
+      color-mix(in srgb, var(--color-primary-hover) 34%, transparent) 42%,
+      transparent 76%
     );
   }
 
@@ -140,7 +268,6 @@
   .store-marquee-track[data-direction="reverse"] {
     animation-direction: reverse;
   }
-
 }
 
 @keyframes site-menu-slide-down {

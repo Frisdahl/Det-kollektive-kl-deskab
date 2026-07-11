@@ -33,7 +33,7 @@ function ScrollToTop() {
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex min-h-svh flex-col bg-[#f9f4f1] text-[#2A2926]">
+      <div className="flex min-h-svh flex-col bg-background text-heading">
         <ScrollToTop />
         <Navbar />
         <Routes>

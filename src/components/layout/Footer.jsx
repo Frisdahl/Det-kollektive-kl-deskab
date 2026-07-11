@@ -31,7 +31,7 @@ function AppStoreButton() {
     <a
       href="#download-app"
       aria-label="Download vores medlemsapp i App Store"
-      className="inline-flex h-12 w-fit items-center gap-2 rounded-[0.65rem] bg-[#FDFBF8] px-4 text-[#2A2926] transition-colors hover:bg-[#FFE7CE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DCC8B6]"
+      className="inline-flex h-12 w-fit items-center gap-2 rounded-[0.65rem] bg-surface px-4 text-heading transition-colors hover:bg-accent/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
         <path
@@ -84,13 +84,13 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-12 bg-[#2A2926] text-[#FDFBF8] md:mt-14">
+    <footer className="mt-12 bg-heading text-surface md:mt-14">
       <Container className="pb-12 pt-0 md:pb-16">
-        <div className="flex flex-col items-center border-b border-[#f9f4f1]/16 pb-10 text-center">
+        <div className="flex flex-col items-center border-b border-background/16 pb-10 text-center">
           <Link
             to="/"
             aria-label="Det Kollektive Klædeskab"
-            className="-mt-14 inline-flex h-28 w-28 items-center justify-center rounded-full bg-[#f9f4f1] p-2 transition-transform duration-300 hover:scale-105 md:-mt-16 md:h-32 md:w-32"
+            className="-mt-14 inline-flex h-28 w-28 items-center justify-center rounded-full bg-background p-2 transition-transform duration-300 hover:scale-105 md:-mt-16 md:h-32 md:w-32"
           >
             <img
               src={logo}
@@ -99,7 +99,7 @@ export function Footer() {
               aria-hidden="true"
             />
           </Link>
-          <p className="fluid-kicker mt-8 font-medium uppercase text-[#DCC8B6]">
+          <p className="fluid-kicker mt-8 font-medium uppercase text-divider">
             følg os på sociale medier
           </p>
           <ul className="mt-5 flex items-center justify-center gap-3" aria-label="Sociale medier">
@@ -110,7 +110,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={item.label}
-                  className="group flex h-16 w-16 items-center justify-center rounded-full text-[#FDFBF8] transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DCC8B6]"
+                  className="group flex h-16 w-16 items-center justify-center rounded-full text-surface transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <img
                     src={item.icon}
@@ -129,7 +129,7 @@ export function Footer() {
 
         <div className="grid gap-5 py-10 md:grid-cols-2 lg:grid-cols-3">
           <section className="p-6">
-            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-divider">
               navigation
             </h3>
             <ul className="mt-6 space-y-3">
@@ -137,7 +137,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     to={item.to}
-                    className="group inline-flex items-center gap-2 text-base text-[#FDFBF8] transition-colors hover:text-[#FFE7CE]"
+                    className="group inline-flex items-center gap-2 text-base text-surface transition-colors hover:text-accent"
                   >
                     {item.label}
                     <ArrowUpRight
@@ -152,7 +152,7 @@ export function Footer() {
           </section>
 
           <section className="p-6">
-            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-divider">
               information
             </h3>
             <ul className="mt-6 space-y-3">
@@ -160,7 +160,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     to={item.to}
-                    className="group inline-flex items-center gap-2 text-base text-[#FDFBF8] transition-colors hover:text-[#FFE7CE]"
+                    className="group inline-flex items-center gap-2 text-base text-surface transition-colors hover:text-accent"
                   >
                     {item.label}
                     <ArrowUpRight
@@ -175,10 +175,10 @@ export function Footer() {
           </section>
 
           <section className="p-6 md:col-span-2 lg:col-span-1">
-            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-[#DCC8B6]">
+            <h3 className="font-['Manrope'] text-sm font-bold uppercase tracking-[0.12em] text-divider">
               download vores medlemsapp
             </h3>
-            <p className="mt-5 text-base leading-7 text-[#f9f4f1]/78">
+            <p className="mt-5 text-base leading-7 text-background/78">
               Hav dit medlemskab, dine point og garderoben tæt på i hverdagen.
             </p>
             <div className="mt-6">
@@ -187,8 +187,8 @@ export function Footer() {
           </section>
         </div>
 
-        <div className="flex flex-col gap-6 border-t border-[#f9f4f1]/16 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <p className="text-sm text-[#f9f4f1]/58">
+        <div className="flex flex-col gap-6 border-t border-background/16 pt-8 lg:flex-row lg:items-center lg:justify-between">
+          <p className="text-sm text-background/58">
             © {new Date().getFullYear()} Det Kollektive Klædeskab
           </p>
           <ul className="flex flex-wrap items-center gap-2" aria-label="Betalingsmidler">

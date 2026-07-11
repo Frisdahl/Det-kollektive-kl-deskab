@@ -1,8 +1,8 @@
 const variantClasses = {
-  primary: 'bg-[#CFAFA7] text-[#2A2926] hover:bg-[#8A776B]',
+  primary: 'bg-accent text-heading hover:bg-accent-hover',
   secondary:
-    'border border-[#CFAFA7] bg-transparent text-[#2A2926] hover:bg-[#FDFBF8]',
-  ghost: 'bg-transparent text-[#2A2926] hover:bg-[#FDFBF8]',
+    'border border-accent bg-transparent text-heading hover:bg-surface',
+  ghost: 'bg-transparent text-heading hover:bg-surface',
 }
 
 export function Button({
@@ -19,7 +19,7 @@ export function Button({
     <Component
       type={buttonType}
       className={[
-        'inline-flex cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CFAFA7]',
+        'inline-flex cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
         variantClasses[variant],
         className,
       ].join(' ')}

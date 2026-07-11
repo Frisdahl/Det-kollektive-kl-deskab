@@ -24,21 +24,21 @@ const contactDetails = [
 ]
 
 const inputClasses =
-  'w-full rounded-[1rem] border border-[#DCC8B6] bg-[#FDFBF8] px-4 py-3 text-base text-[#2A2926] outline-none transition-colors placeholder:text-[#6F655F]/55 focus:border-[#8A776B] focus:bg-white'
+  'w-full rounded-[1rem] border border-divider bg-surface px-4 py-3 text-base text-heading outline-none transition-colors placeholder:text-body/55 focus:border-primary focus:bg-surface'
 
 export function Contact() {
   return (
     <main className="flex-1">
-      <section className="bg-[#f9f4f1] pt-10 pb-24 md:pt-14 md:pb-32">
+      <section className="bg-background pt-10 pb-24 md:pt-14 md:pb-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="fluid-kicker mb-5 font-medium uppercase text-[#8A776B]">
+            <p className="fluid-kicker mb-5 font-medium uppercase text-primary">
               Kontakt
             </p>
-            <h1 className="page-title font-normal text-[#2A2926]">
+            <h1 className="page-title font-normal text-heading">
               Har du spørgsmål til medlemskab, gavekort eller garderoben?
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+            <p className="mt-6 max-w-xl text-base leading-7 text-body md:text-lg md:leading-8">
               Skriv til os, hvis du vil høre mere om konceptet, butikkerne
               eller dit medlemskab. Vi vender tilbage hurtigst muligt.
             </p>
@@ -47,7 +47,7 @@ export function Contact() {
           <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:items-stretch lg:gap-24">
             <div className="flex h-full flex-col gap-6">
               <div>
-                <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+                <p className="fluid-kicker font-medium uppercase text-primary">
                   Kontaktoplysninger
                 </p>
 
@@ -57,16 +57,16 @@ export function Contact() {
                       key={detail.label}
                       className="flex gap-4"
                     >
-                      <span className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#DCC8B6] text-[#8A776B]">
+                      <span className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-divider text-primary">
                         <detail.icon className="h-4 w-4" strokeWidth={1.9} aria-hidden="true" />
                       </span>
                       <span>
-                        <span className="block font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                        <span className="block font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                           {detail.label}
                         </span>
                         <a
                           href={detail.href}
-                          className="mt-2 inline-block text-lg leading-7 text-[#2A2926] underline decoration-[#DCC8B6] decoration-2 underline-offset-4 transition-colors hover:text-[#8A776B]"
+                          className="mt-2 inline-block text-lg leading-7 text-heading underline decoration-divider decoration-2 underline-offset-4 transition-colors hover:text-primary"
                           target={detail.label === 'Adresse' ? '_blank' : undefined}
                           rel={detail.label === 'Adresse' ? 'noreferrer' : undefined}
                         >
@@ -78,7 +78,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-hidden rounded-[1.35rem] bg-[#2A2926] shadow-[0_14px_42px_rgba(42,41,38,0.12)]">
+              <div className="flex-1 overflow-hidden rounded-[1.35rem] bg-heading shadow-[var(--shadow-card)]">
                 <div className="relative h-full min-h-56">
                   <img
                     src={contactImage}
@@ -87,7 +87,7 @@ export function Contact() {
                   />
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[linear-gradient(to_top,rgba(42,41,38,0.42),rgba(42,41,38,0)_70%)]"
+                    className="absolute inset-0 media-overlay-medium"
                   />
                 </div>
               </div>
@@ -95,38 +95,38 @@ export function Contact() {
 
             <div>
               <div className="mb-8">
-                <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+                <p className="fluid-kicker font-medium uppercase text-primary">
                   Send besked
                 </p>
-                <h2 className="section-title mt-3 max-w-sm font-normal text-[#2A2926]">
+                <h2 className="section-title mt-3 max-w-sm font-normal text-heading">
                   Vi hjælper dig videre
                 </h2>
               </div>
 
               <form className="grid gap-6" onSubmit={(event) => event.preventDefault()}>
                 <label className="grid gap-2">
-                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Navn
                   </span>
                   <input className={inputClasses} name="name" type="text" placeholder="Dit navn" />
                 </label>
 
                 <label className="grid gap-2">
-                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Email
                   </span>
                   <input className={inputClasses} name="email" type="email" placeholder="din@email.dk" />
                 </label>
 
                 <label className="grid gap-2">
-                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Tlf
                   </span>
                   <input className={inputClasses} name="phone" type="tel" placeholder="+45" />
                 </label>
 
                 <label className="grid gap-2">
-                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                  <span className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Besked
                   </span>
                   <textarea
@@ -138,7 +138,7 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="mt-2 inline-flex w-fit cursor-pointer items-center gap-3 rounded-full bg-[#CFAFA7] px-6 py-3 text-sm font-semibold text-[#2A2926] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DCC8B6]"
+                  className="mt-2 inline-flex w-fit cursor-pointer items-center gap-3 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-heading transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   Send besked
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} aria-hidden="true" />

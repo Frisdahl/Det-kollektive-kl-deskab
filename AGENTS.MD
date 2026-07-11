@@ -20,18 +20,22 @@ Visuel inspiration:
 
 ## Farver
 
-Brug en varm, blød og bæredygtig palette:
+Brug en varm, blød og eksklusiv taupe/brun palette:
 
-- Background: #fefeff
-- Header background: #fefeff
-- Menu background: #fefeff
-- Surface: #FFFDF7
-- Primary: #fce6f1
-- Primary dark: #4F5F35
-- Accent: #ffe7ce
-- Text: #1c1d1d
-- Muted text: #6F6B61
-- Border: #eeefef
+- Background: #F5F0EC
+- Surface: #F8F3EF
+- Primary: #847165
+- Primary hover: #735F54
+- Accent / CTA: #D6B3A2
+- Accent hover: #C59D8B
+- Heading: #2E2926
+- Body text: #5F544D
+- Border: #DED3CA
+- Divider: #D8CDC3
+- Success: #799B7A
+- Error: #B86C6C
+
+Farver skal defineres centralt som Tailwind v4 theme tokens og bruges via semantiske klasser som `bg-background`, `bg-surface`, `bg-primary`, `bg-accent`, `text-heading`, `text-body`, `border-border` og `border-divider`.
 
 Undgå ren hvid/sort som hovedfarver.
 

@@ -6,13 +6,13 @@ function LegalPage({ heading, text }) {
       <section className="py-20 md:py-32">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+            <p className="fluid-kicker font-medium uppercase text-primary">
               Information
             </p>
-            <h1 className="page-title mt-4 font-normal text-[#2A2926]">
+            <h1 className="page-title mt-4 font-normal text-heading">
               {heading}
             </h1>
-            <p className="mt-6 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+            <p className="mt-6 text-base leading-7 text-body md:text-lg md:leading-8">
               {text}
             </p>
           </div>

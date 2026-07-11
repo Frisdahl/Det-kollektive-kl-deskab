@@ -60,7 +60,7 @@ const aboutSections = [
 
 const volunteers = [
   {
-    backgroundClass: "bg-[#F3E7D8]",
+    backgroundClass: "bg-surface",
     email: "mailto:anna@detkollektiveklaedeskab.dk",
     image: volunteerImageOne,
     imageAlt: "Frivillig i Det Kollektive Klædeskab",
@@ -70,7 +70,7 @@ const volunteers = [
     title: "Butik og fællesskab",
   },
   {
-    backgroundClass: "bg-[#D8C3BD]",
+    backgroundClass: "bg-accent/35",
     email: "mailto:sofie@detkollektiveklaedeskab.dk",
     image: volunteerImageTwo,
     imageAlt: "Frivillig med secondhand tøj",
@@ -80,7 +80,7 @@ const volunteers = [
     title: "Sortering og styling",
   },
   {
-    backgroundClass: "bg-[#DDE2D5]",
+    backgroundClass: "bg-success/20",
     email: "mailto:clara@detkollektiveklaedeskab.dk",
     image: volunteerImageThree,
     imageAlt: "Frivillig i fællesskabet",
@@ -90,7 +90,7 @@ const volunteers = [
     title: "Medlemsoplevelse",
   },
   {
-    backgroundClass: "bg-[#E8D6C6]",
+    backgroundClass: "bg-primary/20",
     email: "mailto:emma@detkollektiveklaedeskab.dk",
     image: volunteerImageFour,
     imageAlt: "Frivillig i garderoben",
@@ -114,14 +114,14 @@ function LinkedInIcon(props) {
 
 export function About() {
   return (
-    <main className="flex-1 bg-[#f9f4f1]">
-      <section className="border-b border-[#E6DED6] bg-[#f9f4f1] py-10 md:py-14">
+    <main className="flex-1 bg-background">
+      <section className="border-b border-border bg-background py-10 md:py-14">
         <Container>
           <div className="max-w-4xl">
-            <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+            <p className="fluid-kicker font-medium uppercase text-primary">
               Om os
             </p>
-            <h1 className="page-title mt-4 font-normal text-[#2A2926]">
+            <h1 className="page-title mt-4 font-normal text-heading">
               Et fællesskab med mere liv i garderoben
             </h1>
           </div>
@@ -145,13 +145,13 @@ export function About() {
                       imageFirst ? "lg:order-2" : "",
                     ].join(" ")}
                   >
-                    <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+                    <p className="fluid-kicker font-medium uppercase text-primary">
                       {section.kicker}
                     </p>
-                    <h2 className="section-title mt-3 font-medium text-[#2A2926]">
+                    <h2 className="section-title mt-3 font-medium text-heading">
                       {section.title}
                     </h2>
-                    <div className="mt-6 space-y-5 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+                    <div className="mt-6 space-y-5 text-base leading-7 text-body md:text-lg md:leading-8">
                       {section.body.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
@@ -164,7 +164,7 @@ export function About() {
                             <Link
                               key={link.label}
                               to={link.to}
-                              className="inline-flex items-center gap-2 rounded-full bg-[#8A776B] px-6 py-3 text-sm font-semibold text-[#FDFBF8] transition-colors hover:bg-[#2A2926] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
+                              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-heading transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                             >
                               {link.label}
                               <ArrowUpRight
@@ -177,7 +177,7 @@ export function About() {
                             <Link
                               key={link.label}
                               to={link.to}
-                              className="text-sm font-semibold text-[#8A776B] underline decoration-[#DCC8B6] decoration-2 underline-offset-4 transition-colors hover:text-[#2A2926]"
+                              className="text-sm font-semibold text-primary underline decoration-divider decoration-2 underline-offset-4 transition-colors hover:text-heading"
                             >
                               {link.label}
                             </Link>
@@ -189,7 +189,7 @@ export function About() {
 
                   <div
                     className={[
-                      "relative min-h-[21rem] overflow-hidden rounded-[1.5rem] bg-[#DCC8B6] shadow-[0_22px_70px_rgba(42,41,38,0.12)] md:min-h-[30rem]",
+                      "relative min-h-[21rem] overflow-hidden rounded-[1.5rem] bg-divider shadow-[var(--shadow-large)] md:min-h-[30rem]",
                       imageFirst ? "lg:order-1" : "",
                     ].join(" ")}
                   >
@@ -200,7 +200,7 @@ export function About() {
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-[linear-gradient(to_top,rgba(42,41,38,0.28),rgba(42,41,38,0)_58%)]"
+                      className="absolute inset-0 media-overlay-soft"
                     />
                   </div>
                 </article>
@@ -212,15 +212,15 @@ export function About() {
 
       <section className="pb-20 md:pb-28">
         <Container>
-          <div className="border-t border-[#E6DED6] pt-12 md:pt-16">
+          <div className="border-t border-border pt-12 md:pt-16">
             <div className="max-w-3xl">
-              <p className="fluid-kicker font-medium uppercase text-[#8A776B]">
+              <p className="fluid-kicker font-medium uppercase text-primary">
                 Frivillige
               </p>
-              <h2 className="section-title mt-3 font-medium text-[#2A2926]">
+              <h2 className="section-title mt-3 font-medium text-heading">
                 Mød dem, der giver fællesskabet liv
               </h2>
-              <p className="mt-5 text-base leading-7 text-[#6F655F] md:text-lg md:leading-8">
+              <p className="mt-5 text-base leading-7 text-body md:text-lg md:leading-8">
                 Vores frivillige er en vigtig del af Det Kollektive Klædeskab.
                 De hjælper med tøjet, stemningen og den hverdag, der får
                 garderoben til at fungere.
@@ -231,7 +231,7 @@ export function About() {
               {volunteers.map((volunteer) => (
                 <article
                   key={volunteer.name}
-                  className="group text-[#2A2926]"
+                  className="group text-heading"
                 >
                   <div
                     className={[
@@ -242,7 +242,7 @@ export function About() {
                     <div
                       className={[
                         "absolute inset-0 overflow-hidden rounded-[1.25rem] transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:-translate-y-2",
-                        "bg-[#DCC8B6]",
+                        "bg-divider",
                       ].join(" ")}
                     >
                       <img
@@ -252,7 +252,7 @@ export function About() {
                       />
                       <div
                         aria-hidden="true"
-                        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(42,41,38,0.32),rgba(42,41,38,0)_62%)]"
+                        className="absolute inset-0 media-overlay-soft"
                       />
                     </div>
                   </div>
@@ -265,7 +265,7 @@ export function About() {
                         <a
                           href={volunteer.email}
                           aria-label={`Send mail til ${volunteer.name}`}
-                          className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FDFBF8] text-[#8A776B] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
+                          className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-primary transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                         >
                           <Mail className="h-4 w-4" strokeWidth={1.9} aria-hidden="true" />
                         </a>
@@ -274,13 +274,13 @@ export function About() {
                           target="_blank"
                           rel="noreferrer"
                           aria-label={`Åbn LinkedIn for ${volunteer.name}`}
-                          className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FDFBF8] text-[#8A776B] transition-colors hover:bg-[#DCC8B6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A776B]"
+                          className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-primary transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                         >
                           <LinkedInIcon className="h-4 w-4" />
                         </a>
                       </div>
                     </div>
-                    <p className="mt-2 font-['Manrope'] text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#8A776B]">
+                    <p className="mt-2 font-['Manrope'] text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-primary">
                       {volunteer.title}
                     </p>
                   </div>

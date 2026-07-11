@@ -6,7 +6,7 @@ export function FAQ() {
       <section className="py-20 md:py-32">
         <Container>
           <div className="max-w-3xl">
-            <h1 className="page-title font-normal text-[#2A2926]">
+            <h1 className="page-title font-normal text-heading">
               FAQ
             </h1>
           </div>

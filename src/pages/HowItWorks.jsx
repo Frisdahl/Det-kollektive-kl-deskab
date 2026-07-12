@@ -1,5 +1,8 @@
-﻿import {
+﻿import { Link } from "react-router-dom";
+import {
+  ArrowRight,
   Gem,
+  Leaf,
   PackageX,
   Shirt,
   Sparkles,
@@ -8,9 +11,10 @@
 import { Container } from "../components/layout/Container";
 import { StepSlider } from "../components/ui/StepSlider";
 import guideVideo from "../assets/videos/kollektive-klaedeskab-guide.webm";
-import heroBackground from "../assets/images/hero-img.webp";
-import navbarImage from "../assets/images/navbar-image.webp";
-import rydOpImage from "../assets/images/ryd-op.webp";
+import klaedeskabetHeroImage from "../assets/images/klaedeskabet-hero-img.webp";
+import stepAfleverImage from "../assets/images/step-aflever.webp";
+import stepModtagPointImage from "../assets/images/step-modtag-point.webp";
+import stepRydOpImage from "../assets/images/step-ryd-op.webp";
 import sliderImg2 from "../assets/images/slider-img-2.webp";
 import sliderImg4 from "../assets/images/slider-img-4.webp";
 import videoBgImageOne from "../assets/images/video-bg-img.webp";
@@ -19,17 +23,17 @@ import videoBgImageThree from "../assets/images/video-bg-img-3.webp";
 
 const steps = [
   {
-    image: rydOpImage,
+    image: stepRydOpImage,
     title: "Ryd op i dit klædeskab",
     text: "Find det tøj frem, du ikke længere bruger, men som andre kan få glæde af.",
   },
   {
-    image: heroBackground,
+    image: stepAfleverImage,
     title: "Aflever dit tøj",
     text: "Kom forbi garderoben og aflever dine udvalgte styles til fællesskabet.",
   },
   {
-    image: navbarImage,
+    image: stepModtagPointImage,
     title: "Modtag point for dit tøj",
     text: "Vi vurderer tøjet og giver dig point, du kan bruge i garderoben.",
   },
@@ -230,29 +234,73 @@ function PointGuideGrid({ groups }) {
 export function HowItWorks() {
   return (
     <main className="flex-1 bg-background">
-      <section className="border-b border-border py-10 md:py-14">
-        <Container>
-          <div className="max-w-4xl">
+      <section className="relative overflow-hidden bg-hero text-heading">
+        <div className="absolute inset-y-0 right-0 hidden w-[62%] md:block">
+          <img
+            src={klaedeskabetHeroImage}
+            alt=""
+            className="h-full w-full object-cover object-center"
+            aria-hidden="true"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(90deg,var(--color-hero)_0%,color-mix(in_srgb,var(--color-hero)_90%,transparent)_16%,color-mix(in_srgb,var(--color-hero)_52%,transparent)_34%,transparent_56%)]"
+          />
+        </div>
+
+        <Container className="relative z-10 grid min-h-[31rem] items-center py-14 md:grid-cols-[minmax(0,0.84fr)_minmax(18rem,1.16fr)] md:py-20 lg:min-h-[36rem]">
+          <div className="max-w-xl">
             <p className="fluid-kicker font-medium uppercase text-primary">
               Sådan gør du
             </p>
             <h1 className="page-title mt-4 font-normal text-heading">
               Kom godt i gang med Klædeskabet
             </h1>
+            <p className="mt-6 max-w-md text-base leading-7 text-body md:text-lg md:leading-8">
+              Få overblik over hvordan du afleverer tøj, optjener point og
+              bruger garderoben i dit eget tempo.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link
+                to="/medlemskab"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-7 text-sm font-semibold text-heading transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                Meld dig ind
+              </Link>
+              <a
+                href="#kom-i-gang"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-2 text-sm font-semibold text-heading transition-colors hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4"
+              >
+                Sådan gør du
+                <ArrowRight className="h-4 w-4" strokeWidth={1.8} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <div className="relative mt-12 min-h-[20rem] overflow-hidden rounded-[1.4rem] bg-divider shadow-[var(--shadow-large)] md:hidden">
+            <img
+              src={klaedeskabetHeroImage}
+              alt="Medlem finder tøj i Det Kollektive Klædeskab"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[linear-gradient(180deg,transparent_46%,color-mix(in_srgb,var(--color-hero)_90%,transparent)_100%)]"
+            />
           </div>
         </Container>
       </section>
 
-      <section className="bg-primary-gradient py-16 text-surface md:py-20">
+      <section id="kom-i-gang" className="scroll-mt-28 py-16 text-heading md:scroll-mt-32 md:py-20">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.76fr)_minmax(0,1.24fr)] lg:items-end">
             <div>
-              <p className="fluid-kicker font-medium uppercase text-background/70">
+              <p className="fluid-kicker font-medium uppercase text-primary">
                 Kom i gang
               </p>
               <h2 className="section-title mt-3 font-medium">Sådan gør du</h2>
             </div>
-            <p className="max-w-2xl text-base leading-7 text-background/78 md:text-lg md:leading-8 lg:justify-self-end">
+            <p className="max-w-md text-base leading-7 text-body md:text-lg md:leading-8 lg:justify-self-end">
               Et medlemskab giver dig adgang til garderoben, hvor du kan låne,
               bruge og bytte tøj i dit eget tempo.
             </p>
@@ -262,7 +310,7 @@ export function HowItWorks() {
         </Container>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="pb-16 md:pb-24">
         <Container>
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(16rem,0.62fr)] lg:items-center lg:gap-8">
             <div className="max-w-xl">
@@ -333,15 +381,15 @@ export function HowItWorks() {
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-surface text-heading">
+      <section className="relative overflow-hidden bg-hero text-heading">
         <div
           aria-hidden="true"
           className="absolute bottom-0 right-0 top-0 hidden w-[46vw] overflow-hidden lg:block"
         >
           <img
-            src={videoBgImageOne}
+            src={klaedeskabetHeroImage}
             alt=""
-            className="h-full w-full object-cover object-center opacity-42"
+            className="h-full w-full object-cover object-center opacity-58"
           />
           <div className="absolute inset-0 pointguide-image-fade-left" />
         </div>
@@ -370,30 +418,19 @@ export function HowItWorks() {
       </section>
 
       <section className="relative mb-16 overflow-hidden md:mb-24">
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 top-0 w-[42%] overflow-hidden md:w-[30%] lg:w-[26%]"
-        >
-          <img
-            src={videoBgImageOne}
-            alt=""
-            className="h-full w-full object-cover object-center opacity-24"
-          />
-          <div className="absolute inset-0 notes-image-fade-right" />
-        </div>
         <Container className="relative z-10">
-          <div className="mx-auto max-w-5xl pt-16 text-left md:pt-20">
+          <div className="mx-auto max-w-[88rem] pt-16 text-left md:pt-20">
             <p className="font-['Manrope'] text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                Godt at vide
-              </p>
-            <div className="mt-8 grid overflow-hidden sm:grid-cols-2 lg:grid-cols-5">
+              Godt at vide
+            </p>
+            <div className="mt-8 grid gap-y-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-5 xl:gap-x-7">
               {pointNotes.map((note) => (
-                <div key={note.text} className="flex flex-col items-start border-b border-divider py-6 text-left last:border-b-0 sm:odd:border-r lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0">
-                  <span className="flex h-12 w-12 items-center justify-center text-primary">
-                    <note.icon className="h-7 w-7" strokeWidth={1.45} aria-hidden="true" />
+                <div key={note.text} className="relative flex flex-col items-start border-t border-divider pt-6 text-left lg:min-w-0 lg:pr-5 lg:last:pr-0 xl:pr-7">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface text-primary shadow-[0_10px_24px_color-mix(in_srgb,var(--color-heading)_5%,transparent)]">
+                    <note.icon className="h-6 w-6" strokeWidth={1.45} aria-hidden="true" />
                   </span>
-                  <div className="mt-4">
-                    <p className="text-sm leading-6 text-body">
+                  <div className="mt-5 max-w-[15rem] lg:max-w-none">
+                    <p className="text-[0.82rem] leading-6 text-body xl:text-sm">
                       {note.text}
                     </p>
                   </div>
@@ -401,10 +438,13 @@ export function HowItWorks() {
               ))}
             </div>
           </div>
-          <p className="mx-auto mt-12 max-w-3xl pb-16 text-center text-sm leading-6 text-body md:pb-20">
-            Vi samarbejder med www.trasborg.dk og vi kan forsikre om at der bliver taget godt hånd om det her.
-            (strømper og underbukser donerer vi til reden)
-          </p>
+          <div className="mx-auto mt-12 flex max-w-xl items-start justify-center gap-3 pb-16 text-sm leading-6 text-body md:pb-20">
+            <Leaf className="mt-0.5 h-9 w-9 shrink-0 text-primary" strokeWidth={1.45} aria-hidden="true" />
+            <p>
+              Vi samarbejder med www.trasborg.dk og vi kan forsikre om at der bliver taget godt hånd om det her.
+              (strømper og underbukser donerer vi til reden)
+            </p>
+          </div>
         </Container>
       </section>
     </main>

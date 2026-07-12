@@ -2,9 +2,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Droplets,
+  GraduationCap,
   Heart,
+  Leaf,
   Recycle,
+  RefreshCw,
+  Shirt,
   Store,
+  Users,
 } from "lucide-react";
 import { Container } from "../components/layout/Container";
 import { ImageCarousel } from "../components/ui/ImageCarousel";
@@ -17,7 +22,9 @@ import sliderImg4 from "../assets/images/slider-img-4.webp";
 import sliderImg5 from "../assets/images/slider-img-5.webp";
 import sliderImg6 from "../assets/images/slider-img-6.webp";
 import sliderImg7 from "../assets/images/slider-img-7.webp";
-import rydOpImage from "../assets/images/ryd-op.webp";
+import stepAfleverImage from "../assets/images/step-aflever.webp";
+import stepModtagPointImage from "../assets/images/step-modtag-point.webp";
+import stepRydOpImage from "../assets/images/step-ryd-op.webp";
 import facebookIcon from "../assets/icons/facebook-icon.svg";
 import instagramIcon from "../assets/icons/instagram-icon.svg";
 import guideVideo from "../assets/videos/kollektive-klaedeskab-guide.webm";
@@ -118,17 +125,17 @@ const salesPoints = [
 
 const howItWorksSteps = [
   {
-    image: rydOpImage,
+    image: stepRydOpImage,
     title: "Ryd op i dit klædeskab",
     text: "Find det tøj frem, du ikke længere bruger, men som andre kan få glæde af.",
   },
   {
-    image: heroBackground,
+    image: stepAfleverImage,
     title: "Aflever dit tøj",
     text: "Kom forbi garderoben og aflever dine udvalgte styles til fællesskabet.",
   },
   {
-    image: navbarImage,
+    image: stepModtagPointImage,
     title: "Modtag point for dit tøj",
     text: "Vi vurderer tøjet og giver dig point, du kan bruge i garderoben.",
   },
@@ -146,22 +153,45 @@ const howItWorksSteps = [
 
 const membershipPackages = [
   {
+    icon: Shirt,
     name: "Alm. medlem",
     text: "Første måned 99 kr.",
     price: "199 kr. pr. måned",
-    tone: "bg-surface",
   },
   {
+    icon: GraduationCap,
     name: "Studie medlem",
     text: "Første måned gratis",
     price: "149 kr. pr. måned",
-    tone: "bg-surface",
   },
   {
+    icon: Users,
     name: "Familie medlem",
     text: "Mor (eller far) og barn mellem 16-20 år. Første måned 149 kr.",
     price: "299 kr. pr. måned",
-    tone: "bg-surface",
+  },
+];
+
+const membershipBenefits = [
+  {
+    icon: RefreshCw,
+    title: "Fleksibelt medlemskab",
+    text: "Pause eller opsig når som helst.",
+  },
+  {
+    icon: Heart,
+    title: "Støtter lokalt",
+    text: "Vi samarbejder med lokale initiativer.",
+  },
+  {
+    icon: Leaf,
+    title: "Bæredygtigt valg",
+    text: "Mindre forbrug, mere omtanke.",
+  },
+  {
+    icon: Shirt,
+    title: "Stort udvalg",
+    text: "Nye styles hver uge - til enhver smag.",
   },
 ];
 
@@ -195,15 +225,17 @@ const faqItems = [
 
 export function Home() {
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
+  const [previousHeroIndex, setPreviousHeroIndex] = useState(null);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [visibleReviews, setVisibleReviews] = useState(2);
   const allReviewsVisible = visibleReviews >= trustpilotReviews.length;
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveHeroIndex(
-        (current) => (current + 1) % heroCarouselImages.length,
-      );
+      setActiveHeroIndex((current) => {
+        setPreviousHeroIndex(current);
+        return (current + 1) % heroCarouselImages.length;
+      });
     }, 3800);
 
     return () => window.clearInterval(interval);
@@ -219,17 +251,17 @@ export function Home() {
 
   return (
     <main className="w-full">
-      <section className="bg-primary-gradient pb-16 text-surface md:pb-20">
+      <section className="bg-hero pb-16 text-heading md:pb-20">
         <Container className="grid min-h-[28rem] items-center gap-10 py-8 md:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] md:py-10 lg:min-h-[31rem] lg:gap-16">
           <div className="flex min-h-[22rem] max-w-xl flex-col justify-center py-6 md:min-h-[25rem]">
-            <p className="fluid-kicker mb-5 font-medium uppercase text-background/70">
+            <p className="fluid-kicker mb-5 font-medium uppercase text-primary">
               Fælles garderobe i København
             </p>
             <h1 className="hero-title font-normal">
               <span className="block">Flere outfits.</span>
               <span className="block">Mindre forbrug.</span>
             </h1>
-            <p className="mt-6 max-w-md text-[clamp(1rem,0.7vw+0.8rem,1.2rem)] leading-7 text-background/78 md:leading-8">
+            <p className="mt-6 max-w-md text-[clamp(1rem,0.7vw+0.8rem,1.2rem)] leading-7 text-body md:leading-8">
               Lån, byt og del tøj i et lokalt fællesskab med mere stil og mindre
               spild.
             </p>
@@ -244,6 +276,7 @@ export function Home() {
                 className={[
                   "hero-slide absolute inset-0 h-full w-full object-cover object-center",
                   index === activeHeroIndex ? "is-active" : "",
+                  index === previousHeroIndex ? "is-previous" : "",
                 ].join(" ")}
                 aria-hidden={index === activeHeroIndex ? undefined : "true"}
               />
@@ -375,25 +408,25 @@ export function Home() {
         </Container>
       </section>
 
-      <section id="butikker" className="bg-primary-gradient pt-16 pb-8 text-surface md:pt-20 md:pb-10">
+      <section id="butikker" className="bg-hero pt-16 pb-8 text-heading md:pt-20 md:pb-10">
         <Container>
           <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
             <div className="py-8 md:py-10 lg:py-12 lg:pr-0">
-              <p className="fluid-kicker font-medium uppercase text-background/70">
+              <p className="fluid-kicker font-medium uppercase text-primary">
                 Fællesskabet i tal
               </p>
               <h2 className="section-title mt-3 max-w-lg font-medium">
                 Det har vi skabt sammen
               </h2>
 
-              <div className="mt-8 grid border-t border-background/22 sm:grid-cols-2">
+              <div className="mt-8 grid border-t border-divider sm:grid-cols-2">
                 {salesPoints.map((point) => (
                   <article
                     key={point.number}
-                    className="border-b border-background/22 py-5 sm:odd:pr-6 sm:even:border-l sm:even:border-background/22 sm:even:pl-6"
+                    className="border-b border-divider py-5 sm:odd:pr-6 sm:even:border-l sm:even:border-divider sm:even:pl-6"
                   >
                     <div className="flex items-start gap-4">
-                      <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-background/12 text-divider">
+                      <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-primary shadow-[0_10px_24px_color-mix(in_srgb,var(--color-heading)_5%,transparent)]">
                         {point.icon ? (
                           <point.icon
                             className="h-5 w-5"
@@ -409,11 +442,11 @@ export function Home() {
                           />
                         )}
                       </span>
-                      <h3 className="stat-title font-normal text-surface">
+                      <h3 className="font-['DM_Serif_Display'] text-[clamp(1.45rem,2.1vw,2.65rem)] leading-[1.05] font-normal text-heading">
                         {point.number}
                       </h3>
                     </div>
-                    <p className="mt-4 max-w-xs text-base leading-6 text-background/78 md:leading-7">
+                    <p className="mt-4 max-w-xs text-base leading-6 text-body md:leading-7">
                       {point.text}
                     </p>
                   </article>
@@ -421,15 +454,25 @@ export function Home() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center pb-8 md:pb-10 lg:px-0 lg:py-12 lg:pr-12">
+            <div className="relative flex min-h-[34rem] items-center justify-center pb-8 md:pb-10 lg:px-0 lg:py-12 lg:pr-12">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute right-0 bottom-8 h-40 w-40 translate-x-1/4 overflow-hidden rounded-full opacity-20 lg:h-60 lg:w-60"
+                className="pointer-events-none absolute -left-8 -top-2 h-36 w-44 -rotate-[7deg] overflow-hidden rounded-[58%_42%_62%_38%/44%_60%_40%_56%] opacity-45 shadow-[var(--shadow-card)] md:-left-12 md:-top-3 md:h-44 md:w-56 lg:-left-16 lg:top-1 lg:h-52 lg:w-64"
               >
                 <img
                   src={navbarImage}
                   alt=""
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-9 -bottom-6 h-40 w-48 rotate-[8deg] overflow-hidden rounded-[44%_56%_39%_61%/61%_42%_58%_39%] opacity-42 shadow-[var(--shadow-card)] md:-right-14 md:-bottom-9 md:h-52 md:w-64 lg:-right-16 lg:-bottom-5 lg:h-64 lg:w-72"
+              >
+                <img
+                  src={stepModtagPointImage}
+                  alt=""
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
 
@@ -451,19 +494,19 @@ export function Home() {
         </Container>
       </section>
 
-      <section id="saadan-goer-du" className="scroll-mt-32 bg-primary-gradient pt-10 pb-24 text-surface md:scroll-mt-40 md:pt-12 md:pb-32">
+      <section id="saadan-goer-du" className="scroll-mt-32 pt-10 pb-0 text-heading md:scroll-mt-40 md:pt-12 md:pb-0">
         <Container>
           <div>
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-end">
               <div className="max-w-xl">
-                <p className="fluid-kicker font-medium uppercase text-background/70">
+                <p className="fluid-kicker font-medium uppercase text-primary">
                   Kom i gang
                 </p>
                 <h2 className="section-title mt-3 font-medium">
                   Sådan gør du
                 </h2>
               </div>
-              <p className="max-w-2xl text-base leading-7 text-background/78 md:text-lg md:leading-8 lg:justify-self-end">
+              <p className="max-w-md text-base leading-7 text-body md:text-lg md:leading-8 lg:justify-self-end">
                 Et medlemskab giver dig adgang til garderoben, hvor du kan låne,
                 bruge og bytte tøj i dit eget tempo.
               </p>
@@ -476,63 +519,76 @@ export function Home() {
 
       <section className="pt-16 pb-16 md:pt-24 md:pb-20">
         <Container>
-          <div className="overflow-hidden rounded-2xl bg-heading text-surface shadow-[var(--shadow-large)] md:rounded-[1.5rem] lg:grid lg:min-h-[32rem] lg:grid-cols-[minmax(0,1fr)_36%]">
-            <div className="px-6 py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
-              <p className="fluid-kicker font-medium uppercase text-divider">
+          <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-membership-card shadow-[var(--shadow-card)]">
+            <div className="absolute inset-y-0 right-0 hidden w-[47%] lg:block">
+              <img
+                src={membershipImage}
+                alt=""
+                className="h-full w-full object-cover object-center opacity-95"
+                aria-hidden="true"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[linear-gradient(90deg,var(--color-membership-card)_0%,color-mix(in_srgb,var(--color-membership-card)_88%,transparent)_16%,color-mix(in_srgb,var(--color-membership-card)_48%,transparent)_36%,transparent_62%)]"
+              />
+            </div>
+
+            <div className="relative z-10 max-w-[58rem] px-6 py-12 md:px-10 md:py-14 lg:px-14 lg:py-16">
+              <p className="fluid-kicker font-medium uppercase text-primary">
                 Medlemskab
               </p>
-              <div className="mt-3 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(16rem,0.55fr)] lg:items-end">
-                <h2 className="section-title font-medium">
-                  Vælg dit medlemskab
-                </h2>
-                <p className="text-base leading-7 text-background/72 md:text-lg">
-                  Vælg den rytme, der passer til din garderobe, og få adgang
-                  til et lokalt udvalg med mere liv i hvert stykke tøj.
-                </p>
-              </div>
+              <h2 className="section-title mt-3 font-medium text-heading">
+                Vælg dit medlemskab
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-7 text-body md:text-lg md:leading-8">
+                Vælg den rytme, der passer til din garderobe, og få adgang til
+                et lokalt udvalg med mere liv i hvert stykke tøj.
+              </p>
 
               <div className="mt-10 grid gap-4 md:grid-cols-3 md:items-stretch">
                 {membershipPackages.map((membershipPackage, index) => (
                   <article
                     key={membershipPackage.name}
-                    className={[
-                      membershipPackage.tone,
-                      "relative flex min-w-0 flex-col overflow-hidden rounded-2xl p-6 text-heading shadow-[var(--shadow-card)]",
-                      index === 1
-                        ? "border border-divider bg-surface md:shadow-[var(--shadow-large)] before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-divider"
-                        : "",
-                    ].join(" ")}
+                    className="relative flex min-w-0 flex-col rounded-[1rem] bg-surface p-6 text-heading shadow-[0_12px_30px_color-mix(in_srgb,var(--color-heading)_5%,transparent)]"
                   >
-                    <h3 className="card-title font-['Manrope'] font-bold text-heading">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-membership-card text-primary shadow-[0_10px_24px_color-mix(in_srgb,var(--color-heading)_5%,transparent)]">
+                      <membershipPackage.icon className="h-6 w-6" strokeWidth={1.45} aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-7 font-['Manrope'] text-lg font-bold text-heading">
                       {membershipPackage.name}
                     </h3>
                     <p className="mt-5 flex-1 text-base leading-7 text-body">
                       {membershipPackage.text}
                     </p>
-                    <p className="mt-6 text-lg font-semibold text-heading md:text-xl">
+                    <div className="mt-7 h-px w-full bg-divider" />
+                    <p className="mt-7 font-['DM_Serif_Display'] text-[clamp(1.25rem,1.2vw,1.55rem)] font-normal leading-tight text-heading">
                       {membershipPackage.price}
                     </p>
                     {index === 1 ? (
-                      <span className="mt-8 inline-flex w-fit rounded-full border border-divider bg-background px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-primary">
-                        populær
+                      <span className="mt-5 inline-flex w-fit rounded-full bg-membership-card px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-primary shadow-[0_8px_20px_color-mix(in_srgb,var(--color-heading)_4%,transparent)]">
+                        Populær
                       </span>
                     ) : null}
                   </article>
                 ))}
               </div>
-            </div>
 
-            <div className="relative h-64 w-full sm:h-72 lg:h-full lg:min-h-full">
-              <img
-                src={membershipImage}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover object-right opacity-90"
-                aria-hidden="true"
-              />
-              <div
-                aria-hidden="true"
-                className="media-fade-text-left absolute inset-0 z-10"
-              />
+              <div className="mt-8 grid gap-y-6 rounded-[1rem] border border-border bg-membership-card px-6 py-6 sm:grid-cols-2 lg:grid-cols-4">
+                {membershipBenefits.map((benefit) => (
+                  <div
+                    key={benefit.title}
+                    className="border-divider lg:border-l lg:px-7 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
+                  >
+                    <benefit.icon className="h-6 w-6 text-primary" strokeWidth={1.45} aria-hidden="true" />
+                    <p className="mt-4 font-['Manrope'] text-sm font-semibold text-heading">
+                      {benefit.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-body">
+                      {benefit.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Container>

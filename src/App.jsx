@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
 import { About } from './pages/About'
+import { Cancellation } from './pages/Cancellation'
 import { Contact } from './pages/Contact'
 import { FAQ } from './pages/FAQ'
 import { GiftCard } from './pages/GiftCard'
@@ -45,6 +46,7 @@ function App() {
           <Route path="/gavekort" element={<GiftCard />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/kontakt" element={<Contact />} />
+          <Route path="/afmeld-medlemskab" element={<Cancellation />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/vilkaar" element={<Terms />} />
           <Route path="/privatlivspolitik" element={<PrivacyPolicy />} />

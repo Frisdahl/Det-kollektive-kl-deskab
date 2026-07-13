@@ -1,5 +1,5 @@
 ﻿import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import applePayIcon from "../../assets/icons/applepay.svg";
 import facebookIcon from "../../assets/icons/facebook-icon.svg";
 import googlePayIcon from "../../assets/icons/googlepay.svg";
@@ -24,6 +24,7 @@ const informationLinks = [
   { label: "Privatlivspolitik", to: "/privatlivspolitik" },
   { label: "Kontakt", to: "/kontakt" },
   { label: "Medlems-FAQ", to: "/faq" },
+  { label: "Afmeld medlemskab", to: "/afmeld-medlemskab" },
 ];
 
 function AppStoreButton() {
@@ -63,6 +64,8 @@ function PaymentIcon({ icon, label }) {
 }
 
 export function Footer() {
+  const { pathname } = useLocation();
+  const isCancellationPage = pathname === "/afmeld-medlemskab";
   const socialLinks = [
     {
       label: "Facebook",
@@ -84,7 +87,12 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-12 bg-heading text-surface md:mt-14">
+    <footer
+      className={[
+        "relative z-20 bg-heading text-surface",
+        isCancellationPage ? "mt-0" : "mt-12 md:mt-14",
+      ].join(" ")}
+    >
       <Container className="pb-12 pt-0 md:pb-16">
         <div className="flex flex-col items-center border-b border-background/16 pb-10 text-center">
           <Link

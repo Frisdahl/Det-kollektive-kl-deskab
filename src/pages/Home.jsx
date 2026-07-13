@@ -14,6 +14,7 @@ import {
 import { Container } from "../components/layout/Container";
 import { ImageCarousel } from "../components/ui/ImageCarousel";
 import { StepSlider } from "../components/ui/StepSlider";
+import { membershipFaqItems } from "../data/membershipFaqItems";
 import navbarImage from "../assets/images/navbar-image.webp";
 import sliderImg1 from "../assets/images/slider-img-1.webp";
 import sliderImg2 from "../assets/images/slider-img-2.webp";
@@ -192,34 +193,6 @@ const membershipBenefits = [
     icon: Shirt,
     title: "Stort udvalg",
     text: "Nye styles hver uge - til enhver smag.",
-  },
-];
-
-const faqItems = [
-  {
-    question: "Hvordan fungerer medlemskabet?",
-    answer:
-      "Du vælger et medlemskab, får adgang til garderoben og kan bruge dine point på nye fund i vores butikker.",
-  },
-  {
-    question: "Kan jeg aflevere mit eget tøj?",
-    answer:
-      "Ja, du kan aflevere tøj, du ikke længere bruger. Vi vurderer det og giver dig point, som du kan bruge i fællesskabets garderobe.",
-  },
-  {
-    question: "Kan jeg skifte medlemskab senere?",
-    answer:
-      "Ja, du kan justere dit medlemskab, hvis din garderobe eller hverdag ændrer sig.",
-  },
-  {
-    question: "Hvor kan jeg bruge mit medlemskab?",
-    answer:
-      "Dit medlemskab kan bruges i alle vores butikker, så du kan finde nyt tøj der, hvor det passer dig bedst.",
-  },
-  {
-    question: "Hvor mange stykker tøj kan jeg bytte ad gangen?",
-    answer:
-      "Som medlem kan du som udgangspunkt bytte op til 10 stykker tøj ad gangen, så garderoben hele tiden kan cirkulere videre.",
   },
 ];
 
@@ -611,7 +584,7 @@ export function Home() {
             </div>
 
             <div>
-              {faqItems.map((item, index) => {
+              {membershipFaqItems.map((item, index) => {
                 const isOpen = openFaqIndex === index;
                 const answerId = `home-faq-${index}`;
 
@@ -672,4 +645,3 @@ export function Home() {
     </main>
   );
 }
-

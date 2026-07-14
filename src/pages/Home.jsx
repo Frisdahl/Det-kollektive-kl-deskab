@@ -1,6 +1,10 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Droplets,
   GraduationCap,
   Heart,
@@ -15,6 +19,7 @@ import { Container } from "../components/layout/Container";
 import { ImageCarousel } from "../components/ui/ImageCarousel";
 import { StepSlider } from "../components/ui/StepSlider";
 import { membershipFaqItems } from "../data/membershipFaqItems";
+import { productItems } from "../data/productItems";
 import navbarImage from "../assets/images/navbar-image.webp";
 import sliderImg1 from "../assets/images/slider-img-1.webp";
 import sliderImg2 from "../assets/images/slider-img-2.webp";
@@ -108,7 +113,7 @@ const salesPoints = [
     colorClass: "text-success",
     icon: Recycle,
     number: "3.852 kg",
-    text: "CO₂ sparet gennem genbrug.",
+    text: "CO2 sparet gennem genbrug.",
   },
   {
     colorClass: "text-success",
@@ -197,6 +202,7 @@ const membershipBenefits = [
 ];
 
 export function Home() {
+  const productCarouselRef = useRef(null);
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [previousHeroIndex, setPreviousHeroIndex] = useState(null);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
@@ -220,6 +226,22 @@ export function Home() {
         ? 2
         : Math.min(current + 4, trustpilotReviews.length),
     );
+  };
+
+  const scrollProducts = (direction) => {
+    const carousel = productCarouselRef.current;
+
+    if (!carousel) {
+      return;
+    }
+
+    const firstCard = carousel.querySelector("article");
+    const cardWidth = firstCard?.getBoundingClientRect().width ?? 280;
+
+    carousel.scrollBy({
+      behavior: "smooth",
+      left: direction * (cardWidth + 20),
+    });
   };
 
   return (
@@ -306,6 +328,91 @@ export function Home() {
 
       <section className="pb-16 md:pb-20">
         <Container>
+          <div className="flex flex-col gap-6 pt-16 md:flex-row md:items-end md:justify-between md:pt-20">
+            <div className="max-w-2xl">
+              <p className="fluid-kicker font-medium uppercase text-primary">
+                Produkter
+              </p>
+              <h2 className="section-title mt-3 font-medium text-heading">
+                Nyeste fund i garderoben
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-7 text-body md:text-lg md:leading-8">
+                Se et udpluk af styles, du kan finde i fællesskabets garderobe
+                og bruge dine point på.
+              </p>
+            </div>
+
+            <Link
+              to="/produkter"
+              className="inline-flex w-fit cursor-pointer items-center gap-3 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-heading transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              Se alle produkter
+              <ArrowRight className="h-4 w-4" strokeWidth={1.8} aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="mt-10">
+            <div
+              ref={productCarouselRef}
+              className="no-scrollbar flex snap-x gap-5 overflow-x-auto scroll-smooth pb-2"
+              aria-label="Produktkarusel"
+            >
+              {productItems.map((product) => (
+                <article
+                  key={product.name}
+                  className="w-[16rem] shrink-0 snap-start rounded-[1rem] sm:w-[18rem] md:w-[20rem]"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-divider">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-surface/92 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary shadow-[0_8px_18px_color-mix(in_srgb,var(--color-heading)_8%,transparent)]">
+                      {product.category}
+                    </span>
+                  </div>
+
+                  <div className="pt-3">
+                    <div className="space-y-1">
+                      <h3 className="font-['Manrope'] text-sm font-semibold leading-5 text-heading">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs leading-5 text-body">
+                        Str. {product.size}
+                      </p>
+                      <p className="text-sm font-semibold leading-5 text-primary">
+                        {product.points} point
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => scrollProducts(-1)}
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-divider bg-surface text-primary transition-colors hover:bg-membership-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-label="Forrige produkter"
+              >
+                <ChevronLeft className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollProducts(1)}
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-divider bg-surface text-primary transition-colors hover:bg-membership-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-label="Næste produkter"
+              >
+                <ChevronRight className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </Container>
+      </section>
+      <section className="pb-16 md:pb-20">
+        <Container>
           <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
             <p className="fluid-kicker font-medium uppercase text-primary">
               Trustpilot
@@ -354,7 +461,7 @@ export function Home() {
                     </div>
                   </div>
                   <p className="mt-5 text-lg font-medium tracking-[0.12em] text-accent">
-                    ★★★★★
+                    ?????
                   </p>
                   <blockquote className="mt-4 text-lg leading-8 text-heading">
                     “{review.text}”
